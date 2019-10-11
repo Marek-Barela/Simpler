@@ -19,7 +19,7 @@ const Landing: FC = () => {
           <div className={textWrapper}>
             <h1>
               Manage your time and make your life{" "}
-              <span style={{ color: "#53e3a6", fontWeight: 800 }}>simpler</span>
+              <strong style={{ color: "#53e3a6" }}>simpler</strong>
             </h1>
             <Link to="/login">Login</Link>
             <Link to="/registration">Register</Link>
