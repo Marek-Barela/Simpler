@@ -44,11 +44,24 @@
     font-size: 2em;
   }
 }
-
 @media (min-width: 850px) {
   .header {
     height: 100%;
     flex-direction: row;
     padding-top: 10px;
+  }
+  .textWrapper a {
+    min-width: 160px;
+  }
+}
+@media (min-width: 950px) {
+  .textWrapper a {
+    min-width: 185px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .textWrapper a {
+    min-width: 200px;
   }
 }
