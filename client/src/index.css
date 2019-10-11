@@ -17,6 +17,7 @@ textarea {
 
 button {
   cursor: pointer;
+  user-select: none;
 }
 
 a {

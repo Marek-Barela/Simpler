@@ -2,12 +2,11 @@ import React, { FC, useState, FormEvent } from "react";
 import Form from "../Form";
 import FormInput from "../FormInput";
 import FormButton from "../FormSubmitButton";
-import { Link } from "react-router-dom";
+import FormRedirectLink from "../FormRedirectLink";
 import { connect } from "react-redux";
 import { loginUser } from "../../features/login/login-actions";
 import { RootState } from "../../redux/root-reducer";
 import { UserData } from "../../features/login/login-model";
-import styles from "./LoginForm.module.css";
 
 interface DispatchProps {
   login: (payload: UserData) => void;
@@ -30,27 +29,28 @@ const LoginForm: FC<Props> = ({ login }) => {
     login({ email, password });
   };
 
-  const { redirect } = styles;
   return (
     <Form handleSubmit={onSubmit}>
       <FormInput
         name="E-mail"
         type="email"
         onChange={onChange}
-        email={email}
+        value={email}
         autocomplete="email"
       />
       <FormInput
         name="Password"
         type="password"
         onChange={onChange}
-        email={password}
+        value={password}
         autocomplete="current-password"
       />
       <FormButton text="Login" />
-      <span className={redirect}>
-        Not registered? <Link to="/registration">Register</Link>
-      </span>
+      <FormRedirectLink
+        text="Don't have account?"
+        path="/registration"
+        name="Register"
+      />
     </Form>
   );
 };

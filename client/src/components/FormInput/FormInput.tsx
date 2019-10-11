@@ -5,7 +5,7 @@ interface ParentProps {
   name: string;
   type: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  email: string;
+  value: string;
   autocomplete?: string;
 }
 
@@ -15,7 +15,7 @@ const FormInput: FC<Props> = ({
   name,
   type,
   onChange,
-  email,
+  value,
   autocomplete = ""
 }) => {
   const { inputWrapper } = styles;
@@ -26,7 +26,7 @@ const FormInput: FC<Props> = ({
         name={type}
         type={type}
         onChange={onChange}
-        value={email}
+        value={value}
         aria-label={name}
         placeholder={name}
         autoComplete={autocomplete}
