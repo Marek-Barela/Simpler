@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
@@ -9,7 +9,7 @@ import { Route, Switch } from "react-router-dom";
 import { loadUser } from "./features/authorization/authorization-actions";
 import store from "./redux/store";
 
-const App: React.FC = () => {
+const App: FC = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);

@@ -1,20 +1,19 @@
 import React, { FC } from "react";
 import Alert from "../Alert";
 import Logo from "../Logo";
+import SectionWrapper from "../SectionWrapper";
 import RedirectRule from "../RedirectRule";
 import RegistrationForm from "../Registration-Form";
-import styles from "./Registration.module.css";
 
 const Registration: FC = () => {
-  const { container } = styles;
   return (
     <>
       <RedirectRule redirectPathIfNotAuthorized="/registration" />
-      <div className={container}>
+      <SectionWrapper>
         <Alert />
         <Logo />
         <RegistrationForm />
-      </div>
+      </SectionWrapper>
     </>
   );
 };

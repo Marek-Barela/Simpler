@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import RedirectRule from "../RedirectRule";
 import SectionWrapper from "../SectionWrapper";
 import Logo from "../Logo";
@@ -7,7 +7,7 @@ import backgroundImage from "../../assets/images/background.png";
 import managemntImage from "../../assets/images/managment.png";
 import styles from "./Landing.module.css";
 
-const Landing = () => {
+const Landing: FC = () => {
   const { image, header, textWrapper, imageWrapper } = styles;
   return (
     <>
