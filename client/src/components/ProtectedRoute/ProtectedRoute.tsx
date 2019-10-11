@@ -17,10 +17,15 @@ interface StateProps {
 
 type Props = ParentProps & StateProps;
 
-const ProtectedRoute: FC<Props> = ({ path, exact, component, authentication }) => {
+const ProtectedRoute: FC<Props> = ({
+  path,
+  exact,
+  component,
+  authentication
+}) => {
   const { isAuthenticated, isFetching, token } = authentication;
   return token === null || (!isAuthenticated && !isFetching) ? (
-    <Redirect to="/login" />
+    <Redirect exact to="/login" />
   ) : (
     <Route exact={exact} path={path} component={() => component} />
   );

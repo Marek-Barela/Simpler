@@ -20,29 +20,54 @@ button {
 }
 
 a {
-  font-size: 0.8em;
-  color: #333333;
+  color: #ffffff;
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  font-size: 0.6em;
   text-decoration: none;
-  padding: 10px;
-  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 15px;
+  margin: 5px 10px;
   min-width: 200px;
   text-align: center;
-  transition: 0.3s background-color;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  user-select: none;
 }
 
 a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background: #333333;
 }
 
 body {
+  position: relative;
   margin: 0;
   color: #333333;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 450px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media (min-width: 850px) {
+  a {
+    min-width: 160px;
+  }
+}
+
+@media (min-width: 950px) {
+  a {
+    min-width: 185px;
+  }
+}
+
+@media (min-width: 1000px) {
+  a {
+    min-width: 200px;
+  }
 }
