@@ -7,24 +7,29 @@ import styles from "./Dashboard.module.css";
 const Dashboard: FC = () => {
   const {
     container,
-    navBar,
+    navbar,
     navbarWrapper,
     iconContainer,
-    navigationConntainer,
+    navigationContainer,
+    navigationButton,
     contentWrapper,
     aside,
     content
   } = styles;
   return (
     <div className={container}>
-      <nav className={navBar}>
+      <nav className={navbar}>
         <div className={navbarWrapper}>
           <div className={iconContainer}>
             <img src={logoIcon} alt="" />
           </div>
-          <div className={navigationConntainer}>
-            <FontAwesomeIcon icon={faPlus} />
-            <FontAwesomeIcon icon={faCog} />
+          <div className={navigationContainer}>
+            <button className={navigationButton}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+            <button className={navigationButton}>
+              <FontAwesomeIcon icon={faCog} />
+            </button>
           </div>
         </div>
       </nav>
