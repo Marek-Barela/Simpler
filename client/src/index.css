@@ -53,21 +53,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-@media (min-width: 850px) {
-  a {
-    min-width: 160px;
-  }
-}
-
-@media (min-width: 950px) {
-  a {
-    min-width: 185px;
-  }
-}
-
-@media (min-width: 1000px) {
-  a {
-    min-width: 200px;
-  }
-}

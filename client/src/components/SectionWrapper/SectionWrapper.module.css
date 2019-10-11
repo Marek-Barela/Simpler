@@ -2,10 +2,6 @@
   position: relative;
   height: 100vh;
   min-height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .wrapper {
@@ -13,4 +9,8 @@
   height: 100%;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

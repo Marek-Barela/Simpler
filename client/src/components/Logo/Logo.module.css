@@ -4,3 +4,13 @@
   left: 25px;
   width: 130px;
 }
+
+.link {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.link:hover {
+  background: transparent;
+}
