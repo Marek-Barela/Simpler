@@ -1,24 +1,13 @@
-.inputWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-}
-
-.inputWrapper input {
-  width: 200px;
-  height: 43px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 6px 10px;
-}
-
-.inputWrapper label {
+.redirect {
+  color: #333333;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 10px;
   font-size: 0.6em;
-  margin-bottom: 6px;
+  text-align: center;
+  letter-spacing: 1px;
 }
 
-.formButton {
-  padding: 6px 12px;
-  text-align: center;
-  background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+.redirect a {
+  color: #50a3a2;
 }

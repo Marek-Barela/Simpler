@@ -35,6 +35,25 @@
   letter-spacing: 1px;
 }
 
+.textWrapper a {
+  color: #ffffff;
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  font-size: 0.6em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 15px;
+  margin: 5px 10px;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.textWrapper a:hover {
+  background: #333333;
+}
+
 .imageWrapper img {
   max-width: 100%;
 }

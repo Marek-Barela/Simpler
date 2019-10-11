@@ -1,4 +1,8 @@
 import React, { FC, useState, FormEvent } from "react";
+import Form from "../Form";
+import FormInput from "../FormInput";
+import FormButton from "../FormSubmitButton";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser } from "../../features/login/login-actions";
 import { RootState } from "../../redux/root-reducer";
@@ -11,7 +15,6 @@ interface DispatchProps {
 type Props = DispatchProps;
 
 const LoginForm: FC<Props> = ({ login }) => {
-  const { inputWrapper, formButton } = styles;
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -27,35 +30,28 @@ const LoginForm: FC<Props> = ({ login }) => {
     login({ email, password });
   };
 
+  const { redirect } = styles;
   return (
-    <form onSubmit={e => onSubmit(e)}>
-      <div className={inputWrapper}>
-        <label htmlFor="email">E-mail</label>
-        <input
-          name="email"
-          type="username"
-          onChange={onChange}
-          value={email}
-          aria-label="E-mail"
-          placeholder="E-mail"
-        />
-      </div>
-      <div className={inputWrapper}>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          onChange={onChange}
-          value={password}
-          aria-label="password"
-          autoComplete="on"
-          placeholder="Password"
-        />
-      </div>
-      <button className={formButton} type="submit">
-        Login
-      </button>
-    </form>
+    <Form handleSubmit={onSubmit}>
+      <FormInput
+        name="E-mail"
+        type="email"
+        onChange={onChange}
+        email={email}
+        autocomplete="email"
+      />
+      <FormInput
+        name="Password"
+        type="password"
+        onChange={onChange}
+        email={password}
+        autocomplete="current-password"
+      />
+      <FormButton text="Login" />
+      <span className={redirect}>
+        Not registered? <Link to="/registration">Register</Link>
+      </span>
+    </Form>
   );
 };
 
