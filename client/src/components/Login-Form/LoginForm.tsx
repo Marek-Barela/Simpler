@@ -1,9 +1,12 @@
 import React, { FC, useState, FormEvent } from "react";
+import Form from "../Form";
+import FormInput from "../FormInput";
+import FormButton from "../FormSubmitButton";
+import FormRedirectLink from "../FormRedirectLink";
 import { connect } from "react-redux";
 import { loginUser } from "../../features/login/login-actions";
 import { RootState } from "../../redux/root-reducer";
 import { UserData } from "../../features/login/login-model";
-import styles from "./LoginForm.module.css";
 
 interface DispatchProps {
   login: (payload: UserData) => void;
@@ -11,7 +14,6 @@ interface DispatchProps {
 type Props = DispatchProps;
 
 const LoginForm: FC<Props> = ({ login }) => {
-  const { inputWrapper, formButton } = styles;
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -28,34 +30,28 @@ const LoginForm: FC<Props> = ({ login }) => {
   };
 
   return (
-    <form onSubmit={e => onSubmit(e)}>
-      <div className={inputWrapper}>
-        <label htmlFor="email">E-mail</label>
-        <input
-          name="email"
-          type="username"
-          onChange={onChange}
-          value={email}
-          aria-label="E-mail"
-          placeholder="E-mail"
-        />
-      </div>
-      <div className={inputWrapper}>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          onChange={onChange}
-          value={password}
-          aria-label="password"
-          autoComplete="on"
-          placeholder="Password"
-        />
-      </div>
-      <button className={formButton} type="submit">
-        Login
-      </button>
-    </form>
+    <Form handleSubmit={onSubmit}>
+      <FormInput
+        name="E-mail"
+        type="email"
+        onChange={onChange}
+        value={email}
+        autocomplete="email"
+      />
+      <FormInput
+        name="Password"
+        type="password"
+        onChange={onChange}
+        value={password}
+        autocomplete="current-password"
+      />
+      <FormButton text="Login" />
+      <FormRedirectLink
+        text="Don't have account?"
+        path="/registration"
+        name="Register"
+      />
+    </Form>
   );
 };
 

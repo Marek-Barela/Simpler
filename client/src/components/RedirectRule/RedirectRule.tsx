@@ -21,9 +21,9 @@ const RedirectRule: FC<Props> = ({
 }) => {
   const { isAuthenticated, token } = authorization;
   return isAuthenticated && token !== null ? (
-    <Redirect to="/dashboard" />
+    <Redirect exact to="/dashboard" />
   ) : (
-    <Redirect to={redirectPathIfNotAuthorized} />
+    <Redirect exact to={redirectPathIfNotAuthorized} />
   );
 };
 

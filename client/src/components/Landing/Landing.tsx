@@ -1,17 +1,35 @@
-import React from "react";
+import React, { FC } from "react";
 import RedirectRule from "../RedirectRule";
+import SectionWrapper from "../SectionWrapper";
+import Logo from "../Logo";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../assets/images/background.png";
+import managemntImage from "../../assets/images/managment.png";
 import styles from "./Landing.module.css";
 
-const Landing = () => {
-  const { container } = styles;
+const Landing: FC = () => {
+  const { image, header, textWrapper, imageWrapper } = styles;
   return (
-    <div className={container}>
+    <>
       <RedirectRule redirectPathIfNotAuthorized="/" />
-      <h1>Welcome on landing page</h1>
-      <Link to="/login">Login</Link>
-      <Link to="/registration">Registration</Link>
-    </div>
+      <img src={backgroundImage} className={image} alt="" />
+      <SectionWrapper>
+        <Logo />
+        <header className={header}>
+          <div className={textWrapper}>
+            <h1>
+              Manage your time and make your life{" "}
+              <span style={{ color: "#53e3a6", fontWeight: 800 }}>simpler</span>
+            </h1>
+            <Link to="/login">Login</Link>
+            <Link to="/registration">Register</Link>
+          </div>
+          <div className={imageWrapper}>
+            <img src={managemntImage} alt="" />
+          </div>
+        </header>
+      </SectionWrapper>
+    </>
   );
 };
 

@@ -1,0 +1,13 @@
+.redirect {
+  color: #333333;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 15px;
+  font-size: 0.6em;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.redirect a {
+  color: #50a3a2;
+}

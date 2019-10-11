@@ -1,9 +1,12 @@
 import React, { FC, useState, FormEvent } from "react";
+import Form from "../Form";
+import FormInput from "../FormInput";
+import FormButton from "../FormSubmitButton";
+import FormRedirectLink from "../FormRedirectLink";
 import { connect } from "react-redux";
 import { registerUser } from "../../features/register/register-actions";
 import { RootState } from "../../redux/root-reducer";
 import { UserData } from "../../features/register/register-model";
-import styles from "./RegistrationForm.module.css";
 
 interface DispatchProps {
   register: (payload: UserData) => void;
@@ -13,12 +16,11 @@ type Props = DispatchProps;
 
 const RegistrationForm: FC<Props> = ({ register }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
-    password: "",
-    password2: ""
+    password: ""
   });
-  const { name, email, password, password2 } = formData;
+  const { username, email, password } = formData;
 
   const onChange = (e: FormEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
@@ -27,63 +29,36 @@ const RegistrationForm: FC<Props> = ({ register }) => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (password === password2) {
-      register({ name, email, password });
-    }
+    const options = { name: username, email, password };
+    register(options);
   };
-  const { form, inputWrapper, formButton } = styles;
+
   return (
-    <form onSubmit={e => onSubmit(e)} className={form}>
-      <div className={inputWrapper}>
-        <label htmlFor="username">Username</label>
-        <input
-          name="name"
-          type="username"
-          onChange={onChange}
-          value={name}
-          aria-label="Username"
-          placeholder="Username"
-        />
-      </div>
-      <div className={inputWrapper}>
-        <label htmlFor="email">E-mail</label>
-        <input
-          name="email"
-          type="username"
-          onChange={onChange}
-          value={email}
-          aria-label="E-mail"
-          placeholder="E-mail"
-        />
-      </div>
-      <div className={inputWrapper}>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          onChange={onChange}
-          value={password}
-          aria-label="password"
-          autoComplete="new-password"
-          placeholder="Password"
-        />
-      </div>
-      <div className={inputWrapper}>
-        <label htmlFor="password2">Repeat password</label>
-        <input
-          name="password2"
-          type="password"
-          onChange={onChange}
-          value={password2}
-          aria-label="password"
-          autoComplete="new-password"
-          placeholder="Repeat Password"
-        />
-      </div>
-      <button type="submit" className={formButton}>
-        Register
-      </button>
-    </form>
+    <Form handleSubmit={onSubmit}>
+      <FormInput
+        name="Username"
+        type="username"
+        onChange={onChange}
+        value={username}
+        autocomplete="off"
+      />
+      <FormInput
+        name="E-mail"
+        type="email"
+        onChange={onChange}
+        value={email}
+        autocomplete="email"
+      />
+      <FormInput
+        name="Password"
+        type="password"
+        onChange={onChange}
+        value={password}
+        autocomplete="new-password"
+      />
+      <FormButton text="Register" />
+      <FormRedirectLink text="Already Registred?" path="/login" name="Login" />
+    </Form>
   );
 };
 

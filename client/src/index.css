@@ -17,29 +17,22 @@ textarea {
 
 button {
   cursor: pointer;
+  user-select: none;
 }
 
 a {
-  font-size: 0.8em;
-  color: #333333;
   text-decoration: none;
-  padding: 10px;
-  margin-bottom: 5px;
-  min-width: 200px;
-  text-align: center;
-  transition: 0.3s background-color;
-}
-
-a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  color: inherit;
 }
 
 body {
+  position: relative;
   margin: 0;
   color: #333333;
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 450px;
 }
 
 code {
