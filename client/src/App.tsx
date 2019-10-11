@@ -11,7 +11,9 @@ import store from "./redux/store";
 
 const App: FC = () => {
   useEffect(() => {
-    store.dispatch(loadUser());
+    if (localStorage.getItem("token") !== null) {
+      store.dispatch(loadUser());
+    }
   }, []);
   return (
     <Switch>
