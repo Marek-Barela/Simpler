@@ -1,41 +1,17 @@
 import React, { FC } from "react";
-import FontAwesomeIcon from "../FontAwesomeIcon";
-import logoIcon from "../../assets/images/simpler-icon.png";
-import { faPlus, faCog } from "@fortawesome/free-solid-svg-icons";
+import DashboardSidebar from "../DashboardSidebar";
+import DashboardContent from "../DashboardContent";
+import DashboardTopNavigation from "../DashboardTopNavigation";
 import styles from "./Dashboard.module.css";
 
 const Dashboard: FC = () => {
-  const {
-    container,
-    navbar,
-    navbarWrapper,
-    iconContainer,
-    navigationContainer,
-    navigationButton,
-    contentWrapper,
-    aside,
-    content
-  } = styles;
+  const { container, contentWrapper } = styles;
   return (
     <div className={container}>
-      <nav className={navbar}>
-        <div className={navbarWrapper}>
-          <div className={iconContainer}>
-            <img src={logoIcon} alt="" />
-          </div>
-          <div className={navigationContainer}>
-            <button className={navigationButton}>
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
-            <button className={navigationButton}>
-              <FontAwesomeIcon icon={faCog} />
-            </button>
-          </div>
-        </div>
-      </nav>
+      <DashboardTopNavigation />
       <main className={contentWrapper}>
-        <aside className={aside}>sidebar</aside>
-        <section className={content}>content</section>
+        <DashboardSidebar />
+        <DashboardContent />
       </main>
     </div>
   );

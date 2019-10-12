@@ -3,4 +3,5 @@
   top: 15px;
   left: 25px;
   width: 130px;
+  user-select: none;
 }
