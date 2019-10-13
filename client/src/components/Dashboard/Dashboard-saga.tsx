@@ -6,10 +6,10 @@ import {
   fetchUserTasksRequest
 } from "./Dashboard-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest, Effect } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 
-export function* handleFetchUserProjects(action: any) {
+export function* handleFetchUserProjects(action: Effect) {
   const { payload } = action;
   try {
     yield put(fetchUserProjectsRequest.request());
@@ -23,7 +23,7 @@ export function* handleFetchUserProjects(action: any) {
   }
 }
 
-export function* handleFetchUserTasks(action: any) {
+export function* handleFetchUserTasks(action: Effect) {
   const { payload } = action;
   try {
     yield put(fetchUserTasksRequest.request());
