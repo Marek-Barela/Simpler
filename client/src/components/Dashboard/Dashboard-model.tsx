@@ -4,3 +4,11 @@ export interface ProjectsResponse {
   date?: Date;
   user?: string;
 }
+
+export interface TasksResponse {
+  _id?: string;
+  description?: string;
+  date?: Date;
+  user?: string;
+  projectID: string;
+}
