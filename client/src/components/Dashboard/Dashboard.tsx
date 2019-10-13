@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import DashboardSidebar from "../DashboardSidebar";
 import DashboardContent from "../DashboardContent";
 import DashboardTopNavigation from "../DashboardTopNavigation";
+import RedirectRule from "../RedirectRule";
 import { fetchUserProjects } from "./Dashboard-actions";
 import { getUserDetails } from "../../selectors/getUserData";
 import { connect } from "react-redux";
@@ -21,28 +22,21 @@ type Props = StateProps & DispatchProps;
 const Dashboard: FC<Props> = ({ fetchUserProjects, user }) => {
   useEffect(() => {
     if (user._id !== null) {
-      setTimeout(() => {
-        console.log("running");
-        //fetchUserProjects(user._id);
-      }, 12000);
+      fetchUserProjects(user._id);
     }
   }, [fetchUserProjects, user]);
-
-  const test = () => {
-    fetchUserProjects(user._id);
-  };
-
   const { container, contentWrapper } = styles;
-  console.log(user);
   return (
-    <div className={container}>
-      <DashboardTopNavigation />
-      <main className={contentWrapper}>
-        <button onClick={() => test()}></button>
-        <DashboardSidebar />
-        <DashboardContent />
-      </main>
-    </div>
+    <>
+      <RedirectRule redirectPathIfNotAuthorized="/login" />
+      <div className={container}>
+        <DashboardTopNavigation />
+        <main className={contentWrapper}>
+          <DashboardSidebar />
+          <DashboardContent />
+        </main>
+      </div>
+    </>
   );
 };
 
