@@ -1,12 +1,15 @@
-import { fetchUserProjectsRequest, fetchUserTasksRequest } from "./Dashboard-actions";
+import {
+  fetchUserProjectsRequest,
+  fetchUserTasksRequest
+} from "./Dashboard-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
 
-interface DashboardState {
+export interface DashboardState {
   isFetching: boolean;
   projects?: ProjectsResponse[];
-  tasks?:TasksResponse [];
+  tasks?: TasksResponse[];
 }
 
 const initialState: DashboardState = {
@@ -15,7 +18,10 @@ const initialState: DashboardState = {
   tasks: []
 };
 
-export default function(state:DashboardState = initialState, action: RootAction):DashboardState {
+export default function(
+  state: DashboardState = initialState,
+  action: RootAction
+): DashboardState {
   switch (action.type) {
     case getType(fetchUserTasksRequest.request):
     case getType(fetchUserProjectsRequest.request): {

@@ -1,9 +1,9 @@
 .dropdownItem {
-  font-size: 0.6em;
+  font-size: 0.5em;
   padding: 13px;
   user-select: none;
   cursor: pointer;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .dropdownItem:hover {
@@ -12,4 +12,38 @@
 
 .dropdownItem:first-child {
   margin-top: 10px;
+}
+
+.newProject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #808080;
+  font-size: 0.5em;
+  border: 0;
+  background-color: transparent;
+  margin: 10px 0;
+  padding: 5px 13px;
+  letter-spacing: 2px;
+}
+
+.newProject:hover {
+  color: #53e3a6;
+}
+
+.newProjectPlus {
+  font-size: 1.3em;
+  border-radius: 100%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  width: 13px;
+  height: 13px;
+}
+
+.newProject:hover .newProjectPlus {
+  color: #ffffff;
+  background-color: #53e3a6;
 }

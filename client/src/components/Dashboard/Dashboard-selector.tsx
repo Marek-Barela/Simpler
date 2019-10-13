@@ -1,5 +1,6 @@
 import { RootState } from "../../redux/root-reducer";
+import { DashboardState } from "./Dashboard-reducer";
 
-export const getUserProjects = (state: RootState) => {
-  return state;
+export const getUserDashboardData = (state: RootState): DashboardState => {
+  return state.dashboard;
 };
