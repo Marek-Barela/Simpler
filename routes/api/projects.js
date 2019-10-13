@@ -23,7 +23,8 @@ router.post("/", [
   try {
     const newProject = new Project ({
       title: req.body.title,
-      user: req.user.id
+      user: req.user.id,
+      color: req.body.color
     });
 
     const project = await newProject.save();

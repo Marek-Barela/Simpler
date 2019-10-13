@@ -3,6 +3,7 @@ export interface ProjectsResponse {
   title?: string;
   date?: Date;
   user?: string;
+  color?: string;
 }
 
 export interface TasksResponse {
