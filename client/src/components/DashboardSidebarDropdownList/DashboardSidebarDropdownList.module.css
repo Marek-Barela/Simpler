@@ -1,0 +1,15 @@
+.dropdownItem {
+  font-size: 0.6em;
+  padding: 13px;
+  user-select: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.dropdownItem:hover {
+  background-color: #ffffff;
+}
+
+.dropdownItem:first-child {
+  margin-top: 10px;
+}
