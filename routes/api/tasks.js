@@ -12,6 +12,9 @@ router.post("/", [
   [
     check("description", "description of the task is required")
       .not()
+      .isEmpty(),
+    check("projectID", "projectID of the task is required")
+      .not()
       .isEmpty()
   ]
 ], async (req, res) => {

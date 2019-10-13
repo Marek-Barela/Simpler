@@ -17,17 +17,35 @@ interface StateProps {
 
 type Props = ParentProps & StateProps;
 
-const DashboardSidebarDropdownList: FC<Props> = ({ listStyling, dashboardData }) => {
+const DashboardSidebarDropdownList: FC<Props> = ({
+  listStyling,
+  dashboardData
+}) => {
   const { projects = [] } = dashboardData;
-  const { dropdownItem, newProject, newProjectPlus } = styles;
+  const {
+    dropdownItem,
+    newProject,
+    dropdownItemBubble,
+    newProjectPlus
+  } = styles;
   return (
     <ul className={listStyling}>
       {projects.map(project => {
-        const { title, _id } = project;
-        return <li className={dropdownItem} key={_id}>{title}</li>
+        const { _id, color, title } = project;
+        return (
+          <li className={dropdownItem} key={_id}>
+            <span
+              className={dropdownItemBubble}
+              style={{ backgroundColor: color }}
+            />
+            {title}
+          </li>
+        );
       })}
       <button className={newProject}>
-        <span className={newProjectPlus}><FontAwesomeIcon icon={faPlus} /></span> {" "} 
+        <span className={newProjectPlus}>
+          <FontAwesomeIcon icon={faPlus} />
+        </span>{" "}
         Add project
       </button>
     </ul>

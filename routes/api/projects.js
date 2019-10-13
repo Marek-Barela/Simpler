@@ -12,6 +12,9 @@ router.post("/", [
   [
     check("title", "Title of the project is required")
       .not()
+      .isEmpty(),
+    check("color", "Color of the project is required")
+      .not()
       .isEmpty()
   ]
 ], async (req, res) => {

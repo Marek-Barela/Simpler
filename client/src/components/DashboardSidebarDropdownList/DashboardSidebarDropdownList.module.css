@@ -1,9 +1,11 @@
 .dropdownItem {
+  display: flex;
+  align-items: center;
   font-size: 0.5em;
   padding: 13px;
   user-select: none;
   cursor: pointer;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 
 .dropdownItem:hover {
@@ -27,6 +29,13 @@
   letter-spacing: 2px;
 }
 
+.dropdownItemBubble {
+  display: block;
+  padding: 4px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+
 .newProject:hover {
   color: #53e3a6;
 }
@@ -38,9 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9px;
-  width: 13px;
-  height: 13px;
+  padding: 4px;
 }
 
 .newProject:hover .newProjectPlus {
