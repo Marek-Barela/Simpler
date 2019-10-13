@@ -9,7 +9,7 @@ const initialState: User = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   isFetching: true,
-  user: { _id: "" }
+  user: { _id: null }
 };
 
 export default function(state: User = initialState, action: RootAction): User {
