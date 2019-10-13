@@ -4,4 +4,74 @@
   width: 250px;
   padding: calc(35px + var(--nav-height)) 0;
   height: 100vh;
+  min-height: 400px;
+}
+
+.projectsDropdown {
+  padding-right: 15px;
+}
+
+.dropdownButton {
+  font-size: 0.6em;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  letter-spacing: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px;
+}
+
+.dropdownButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdownButtonCaret {
+  color: #999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  transform: rotate(0deg);
+  transition: transform 0.4s;
+}
+
+.dropdownButtonCaretRotate {
+  transform: rotate(90deg);
+}
+
+.dropdownList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  height: auto;
+  max-height: 2500px;
+  overflow: hidden;
+  transition: max-height 0.4s;
+}
+
+.dropdownListHidden {
+  max-height: 0px;
+}
+
+.dropdownItem {
+  font-size: 0.6em;
+  padding: 10px;
+  user-select: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.dropdownItem:hover {
+  background-color: #ffffff;
+}
+
+.dropdownItem:first-child {
+  margin-top: 10px;
 }
