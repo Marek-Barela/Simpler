@@ -1,11 +1,10 @@
 import React, { FC } from "react";
-import FontAwesomeIcon from "../FontAwesomeIcon";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import CreateProjectButton from "../CreateProjectButton";
+import DropdownItem from "../DashboardSidebarDropdownListItem";
 import { getUserDashboardData } from "../Dashboard/Dashboard-selector";
 import { DashboardState } from "../Dashboard/Dashboard-reducer";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
-import styles from "./DashboardSidebarDropdownList.module.css";
 
 interface ParentProps {
   listStyling: string;
@@ -22,32 +21,13 @@ const DashboardSidebarDropdownList: FC<Props> = ({
   dashboardData
 }) => {
   const { projects = [] } = dashboardData;
-  const {
-    dropdownItem,
-    newProject,
-    dropdownItemBubble,
-    newProjectPlus
-  } = styles;
   return (
     <ul className={listStyling}>
       {projects.map(project => {
-        const { _id, color, title } = project;
-        return (
-          <li className={dropdownItem} key={_id}>
-            <span
-              className={dropdownItemBubble}
-              style={{ backgroundColor: color }}
-            />
-            {title}
-          </li>
-        );
+        const { _id } = project;
+        return <DropdownItem key={_id} {...project} />;
       })}
-      <button className={newProject}>
-        <span className={newProjectPlus}>
-          <FontAwesomeIcon icon={faPlus} />
-        </span>{" "}
-        Add project
-      </button>
+      <CreateProjectButton />
     </ul>
   );
 };

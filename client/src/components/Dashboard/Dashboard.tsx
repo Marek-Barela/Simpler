@@ -3,6 +3,7 @@ import DashboardSidebar from "../DashboardSidebar";
 import DashboardContent from "../DashboardContent";
 import DashboardTopNavigation from "../DashboardTopNavigation";
 import RedirectRule from "../RedirectRule";
+import CreateProjectOverlay from "../CreateProjectOverlay";
 import { fetchUserProjects, fetchUserTasks } from "./Dashboard-actions";
 import { getUserDetails } from "../../selectors/getUserData";
 import { connect } from "react-redux";
@@ -31,6 +32,7 @@ const Dashboard: FC<Props> = ({ fetchUserProjects, fetchUserTasks, user }) => {
   return (
     <>
       <RedirectRule redirectPathIfNotAuthorized="/login" />
+      <CreateProjectOverlay />
       <div className={container}>
         <DashboardTopNavigation />
         <main className={contentWrapper}>

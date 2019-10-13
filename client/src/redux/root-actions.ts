@@ -5,13 +5,15 @@ import * as register from "../features/register/register-actions";
 import * as login from "../features/login/login-actions";
 import * as alert from "../components/Alert/Alert-actions";
 import * as dashboard from "../components/Dashboard/Dashboard-actions";
+import * as createProject from "../components/CreateProjectOverlay/CreateProjectOverlay-actions";
 
 export const actions = {
   authorization,
   register,
   login,
   alert,
-  dashboard
+  dashboard,
+  createProject
 };
 
 export type RootAction = ActionType<typeof actions>;
