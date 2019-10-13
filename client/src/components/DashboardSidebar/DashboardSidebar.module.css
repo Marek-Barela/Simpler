@@ -1,5 +1,7 @@
 .aside {
   position: fixed;
+  top: 0;
   width: 250px;
-  padding: 35px 0;
+  padding: calc(35px + var(--nav-height)) 0;
+  height: 100vh;
 }
