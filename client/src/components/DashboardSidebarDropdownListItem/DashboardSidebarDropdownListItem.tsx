@@ -4,7 +4,7 @@ import styles from "./DashboardSidebarDropdownListItem.module.css";
 
 type Props = ProjectsResponse;
 
-const DashboardSidebarDropdownList: FC<Props> = ({ color, title }) => {
+const DashboardSidebarDropdownListItem: FC<Props> = ({ color, title }) => {
   const { dropdownItem, dropdownItemBubble } = styles;
   return (
     <li className={dropdownItem}>
@@ -14,4 +14,4 @@ const DashboardSidebarDropdownList: FC<Props> = ({ color, title }) => {
   );
 };
 
-export default DashboardSidebarDropdownList;
+export default DashboardSidebarDropdownListItem;
