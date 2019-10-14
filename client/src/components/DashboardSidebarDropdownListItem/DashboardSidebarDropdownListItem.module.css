@@ -1,6 +1,7 @@
 .dropdownItem {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 0.6em;
   padding: 13px;
   user-select: none;
@@ -16,9 +17,30 @@
   margin-top: 10px;
 }
 
+.itemWrapper {
+  display: flex;
+  align-items: center;
+}
+
 .dropdownItemBubble {
   display: block;
   padding: 5px;
   border-radius: 100%;
   margin-right: 13px;
+}
+
+.dropdownItemButton {
+  color: rgba(0, 0, 0, 0.4);
+  border: none;
+  background-color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.dropdownItemButton:hover {
+  color: rgba(255, 0, 0, 0.7);
+}
+
+.dropdownItem:hover .dropdownItemButton {
+  opacity: 1;
 }
