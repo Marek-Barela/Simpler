@@ -1,7 +1,7 @@
 .dropdownItem {
   display: flex;
   align-items: center;
-  font-size: 0.5em;
+  font-size: 0.6em;
   padding: 13px;
   user-select: none;
   cursor: pointer;
@@ -18,7 +18,7 @@
 
 .dropdownItemBubble {
   display: block;
-  padding: 4px;
+  padding: 5px;
   border-radius: 100%;
-  margin-right: 8px;
+  margin-right: 13px;
 }

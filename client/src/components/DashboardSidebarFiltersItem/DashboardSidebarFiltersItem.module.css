@@ -1,0 +1,23 @@
+.item {
+  display: flex;
+  align-items: center;
+  font-size: 0.6em;
+  padding: 13px;
+  user-select: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.item:hover {
+  background-color: #ffffff;
+}
+
+.item span {
+  font-size: 1.2em;
+  margin-right: 13px;
+}
+
+.itemActive {
+  background-color: #ffffff;
+  font-weight: 800;
+}
