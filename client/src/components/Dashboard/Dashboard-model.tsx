@@ -1,9 +1,9 @@
 export interface ProjectsResponse {
-  _id?: string;
-  title?: string;
-  date?: Date;
-  user?: string;
-  color?: string;
+  _id: string;
+  title: string;
+  date: Date;
+  user: string;
+  color: string;
 }
 
 export interface TasksResponse {

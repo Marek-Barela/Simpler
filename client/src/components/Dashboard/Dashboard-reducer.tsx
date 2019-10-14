@@ -1,8 +1,9 @@
 import {
   fetchUserProjectsRequest,
-  fetchUserTasksRequest,
-  addNewProject
+  fetchUserTasksRequest
 } from "./Dashboard-actions";
+import { createProjectRequest } from "../CreateProjectForm/CreateProjectForm-actions";
+import { deleteProjectRequest } from "../DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
@@ -53,10 +54,20 @@ export default function(
         isFetching: false
       };
     }
-    case getType(addNewProject): {
+    case getType(createProjectRequest.success): {
       return {
         ...state,
         projects: [...newState.projects, action.payload]
+      };
+    }
+    case getType(deleteProjectRequest.success): {
+      const filtredProjects = newState.projects.filter(project => {
+        return project._id !== action.payload;
+      });
+
+      return {
+        ...state,
+        projects: filtredProjects
       };
     }
     default: {

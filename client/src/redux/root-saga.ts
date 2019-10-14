@@ -4,6 +4,7 @@ import register from "../features/register/register-saga";
 import login from "../features/login/login-saga";
 import dashboard from "../components/Dashboard/Dashboard-saga";
 import createProject from "../components/CreateProjectForm/CreateProjectForm-saga";
+import deleteProject from "../components/DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-saga";
 
 export default function* rootSaga() {
   yield fork(authorization);
@@ -11,4 +12,5 @@ export default function* rootSaga() {
   yield fork(login);
   yield fork(dashboard);
   yield fork(createProject);
+  yield fork(deleteProject);
 }

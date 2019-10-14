@@ -133,6 +133,10 @@ router.delete("/all/:id", auth, async (req, res) => {
       projectID: req.params.id
     })
 
+    if(tasks.length === 0) {
+      return res.json({ msg: "there is no tasks in project" })
+    }
+
     if(!tasks) {
       return res.status(404).json({ msg: "Task not found" })
     }

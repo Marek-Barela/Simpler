@@ -4,18 +4,15 @@ import CreateProjectButtons from "../CreateProjectFormButtons";
 import { createProject } from "./CreateProjectForm-actions";
 import { switchCreateProjectOverlay } from "../CreateProjectOverlay/CreateProjectOverlay-actions";
 import { connect } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
 import { CreateProjectData } from "./CreateProjectForm-model";
 import styles from "./CreateProjectForm.module.css";
-
-interface StateProps {}
 
 interface DispatchProps {
   switchCreateProjectOverlay: (action: boolean) => void;
   createProject: (action: CreateProjectData) => void;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = DispatchProps;
 
 const CreateProjectForm: FC<Props> = ({
   switchCreateProjectOverlay,
@@ -64,14 +61,12 @@ const CreateProjectForm: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: RootState) => ({});
-
 const mapDispatchToProps = {
   switchCreateProjectOverlay,
   createProject
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CreateProjectForm);

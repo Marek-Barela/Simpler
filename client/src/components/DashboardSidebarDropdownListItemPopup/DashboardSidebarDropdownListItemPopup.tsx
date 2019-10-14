@@ -1,23 +1,28 @@
 import React, { FC } from "react";
+import { deleteProject } from "./DashboardSidebarDropdownListItemPopup-actions";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardSidebarDropdownListItemPopup.module.css";
 
 interface ParentProps {
   setPopupIsVisible: (action: boolean) => void;
-  id: string | undefined;
+  id: string;
 }
 
-type Props = ParentProps;
+interface DispatchProps {
+  deleteProject: (action: string) => void;
+}
 
-const DashboardSidebarDropdownListItemPopup: FC<Props> = ({
-  setPopupIsVisible,
-  id
-}) => {
+type Props = ParentProps & DispatchProps;
+
+const ListItemPopup: FC<Props> = ({ setPopupIsVisible, id, deleteProject }) => {
   const handleCancelClick = () => {
     setPopupIsVisible(false);
   };
 
   const handleDeleteClick = () => {
-    console.log(id);
+    setPopupIsVisible(false);
+    deleteProject(id);
   };
 
   const { popup, overlay, button, deleteButton } = styles;
@@ -38,4 +43,11 @@ const DashboardSidebarDropdownListItemPopup: FC<Props> = ({
   );
 };
 
-export default DashboardSidebarDropdownListItemPopup;
+const mapDispatchToProps = {
+  deleteProject
+};
+
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
+  mapDispatchToProps
+)(ListItemPopup);
