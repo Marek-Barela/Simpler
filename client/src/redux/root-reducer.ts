@@ -4,12 +4,14 @@ import userData from "../features/__commonReducers__/userDataReducer";
 import alert from "../components/Alert/Alert-reducer";
 import dashboard from "../components/Dashboard/Dashboard-reducer";
 import switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-reducer";
+import activeProject from "../components/DashboardContentTasks/DashboardContentTasks-reducer";
 
 const reducerMap = {
   userData,
   alert,
   dashboard,
-  switchOverlay
+  switchOverlay,
+  activeProject
 };
 
 export type RootState = {

@@ -8,6 +8,7 @@ import * as dashboard from "../components/Dashboard/Dashboard-actions";
 import * as switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-actions";
 import * as createProject from "../components/CreateProjectForm/CreateProjectForm-actions";
 import * as deleteProject from "../components/DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-actions";
+import * as activeProject from "../components/DashboardContentTasks/DashboardContentTasks-actions";
 
 export const actions = {
   authorization,
@@ -17,7 +18,8 @@ export const actions = {
   dashboard,
   switchOverlay,
   createProject,
-  deleteProject
+  deleteProject,
+  activeProject
 };
 
 export type RootAction = ActionType<typeof actions>;
