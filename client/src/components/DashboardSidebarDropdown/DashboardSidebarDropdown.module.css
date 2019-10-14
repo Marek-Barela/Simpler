@@ -25,10 +25,10 @@
   list-style-type: none;
   height: auto;
   max-height: 2500px;
-  overflow: hidden;
   transition: max-height 0.4s;
 }
 
 .dropdownListHidden {
   max-height: 0px;
+  overflow: hidden;
 }
