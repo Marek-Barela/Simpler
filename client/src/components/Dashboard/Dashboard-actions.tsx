@@ -20,3 +20,7 @@ export const fetchUserTasksRequest = createAsyncAction(
   "dashboard/FETCH_USER_TASKS_SUCCEEDED",
   "dashboard/FETCH_USER_TASKS_FAILED"
 )<undefined, TasksResponse[], Error>();
+
+export const addNewProject = createAction("dashboard/ADD_NEW_PROJECT", action => {
+  return (payload: ProjectsResponse) => action(payload);
+})

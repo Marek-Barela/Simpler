@@ -3,13 +3,13 @@ import { RootAction } from "./root-actions";
 import userData from "../features/__commonReducers__/userDataReducer";
 import alert from "../components/Alert/Alert-reducer";
 import dashboard from "../components/Dashboard/Dashboard-reducer";
-import createProject from "../components/CreateProjectOverlay/CreateProjectOverlay-reducer";
+import switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-reducer";
 
 const reducerMap = {
   userData,
   alert,
   dashboard,
-  createProject
+  switchOverlay
 };
 
 export type RootState = {

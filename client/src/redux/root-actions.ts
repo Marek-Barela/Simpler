@@ -5,7 +5,8 @@ import * as register from "../features/register/register-actions";
 import * as login from "../features/login/login-actions";
 import * as alert from "../components/Alert/Alert-actions";
 import * as dashboard from "../components/Dashboard/Dashboard-actions";
-import * as createProject from "../components/CreateProjectOverlay/CreateProjectOverlay-actions";
+import * as switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-actions";
+import * as createProject from "../components/CreateProjectForm/CreateProjectForm-actions";
 
 export const actions = {
   authorization,
@@ -13,6 +14,7 @@ export const actions = {
   login,
   alert,
   dashboard,
+  switchOverlay,
   createProject
 };
 
