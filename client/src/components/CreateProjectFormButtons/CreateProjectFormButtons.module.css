@@ -1,0 +1,26 @@
+.button {
+  color: #808080;
+  padding: 6px 22px;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+}
+
+.button:disabled:hover {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.createButton {
+  color: #ffffff;
+  background-color: #53e3a6;
+}
+
+.createButton:disabled {
+  background-color: rgba(83, 227, 166, 0.5);
+}

@@ -1,5 +1,6 @@
 import React, { FC, FormEvent, useState, ChangeEvent } from "react";
 import ProjectFormSelect from "../CreateProjectFormSelect";
+import CreateProjectButtons from "../CreateProjectFormButtons";
 import styles from "./CreateProjectForm.module.css";
 
 const CreateProjectForm: FC = () => {
@@ -37,10 +38,9 @@ const CreateProjectForm: FC = () => {
         />
       </section>
       <footer className={footer}>
-        <button type="button">Cancel</button>
-        <button type="submit" disabled={project.trim().length === 0 || !color}>
-          Add
-        </button>
+        <CreateProjectButtons
+          buttonIsDisabled={project.trim().length === 0 || !color}
+        />
       </footer>
     </form>
   );

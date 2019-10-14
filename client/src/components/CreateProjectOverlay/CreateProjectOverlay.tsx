@@ -19,11 +19,9 @@ const CreateProjectOverlay: FC<Props> = ({
   children
 }) => {
   const { overlay } = styles;
-  return !isProjectOverlayOpen ? (
+  return isProjectOverlayOpen ? (
     <div className={overlay}>{children}</div>
-  ) : (
-    <div></div>
-  );
+  ) : null;
 };
 
 const mapStateToProps = (state: RootState) => ({

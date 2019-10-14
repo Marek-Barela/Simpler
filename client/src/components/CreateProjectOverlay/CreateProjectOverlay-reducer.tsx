@@ -7,7 +7,7 @@ interface CreateProjectOverlay {
 }
 
 const initialState: CreateProjectOverlay = {
-  createProjectOverlayIsOpen: true
+  createProjectOverlayIsOpen: false
 };
 
 export default (
