@@ -4,18 +4,23 @@ import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
 import styles from "./CreateProjectOverlay.module.css";
 
+interface ParentProps {
+  children: JSX.Element | JSX.Element[];
+}
+
 interface StateProps {
   isProjectOverlayOpen: boolean;
 }
 
-type Props = StateProps;
+type Props = ParentProps & StateProps;
 
-const CreateProjectOverlay: FC<Props> = ({ isProjectOverlayOpen }) => {
-  const { overlay, createProjectContainer } = styles;
-  return isProjectOverlayOpen ? (
-    <div className={overlay}>
-      <div className={createProjectContainer}>Text</div>
-    </div>
+const CreateProjectOverlay: FC<Props> = ({
+  isProjectOverlayOpen,
+  children
+}) => {
+  const { overlay } = styles;
+  return !isProjectOverlayOpen ? (
+    <div className={overlay}>{children}</div>
   ) : (
     <div></div>
   );

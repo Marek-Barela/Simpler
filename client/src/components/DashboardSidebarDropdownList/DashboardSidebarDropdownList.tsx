@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import CreateProjectButton from "../CreateProjectButton";
+import NewProjectButton from "../NewProjectButton";
 import DropdownItem from "../DashboardSidebarDropdownListItem";
 import { getUserDashboardData } from "../Dashboard/Dashboard-selector";
 import { DashboardState } from "../Dashboard/Dashboard-reducer";
@@ -27,7 +27,7 @@ const DashboardSidebarDropdownList: FC<Props> = ({
         const { _id } = project;
         return <DropdownItem key={_id} {...project} />;
       })}
-      <CreateProjectButton />
+      <NewProjectButton />
     </ul>
   );
 };

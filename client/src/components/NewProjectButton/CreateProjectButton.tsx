@@ -2,27 +2,19 @@ import React, { FC } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { switchCreateProjectOverlay } from "../CreateProjectOverlay/CreateProjectOverlay-actions";
-import { getProjectOverlayState } from "../CreateProjectOverlay/CreateProjectOverlay-selectors";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
 import styles from "./CreateProjectButton.module.css";
-
-interface StateProps {
-  isProjectOverlayOpen: boolean;
-}
 
 interface DispatchProps {
   switchCreateProjectOverlay: (action: boolean) => void;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = DispatchProps;
 
-const CreateProjectButton: FC<Props> = ({
-  switchCreateProjectOverlay,
-  isProjectOverlayOpen
-}) => {
+const CreateProjectButton: FC<Props> = ({ switchCreateProjectOverlay }) => {
   const handleNewProjectClick = () => {
-    switchCreateProjectOverlay(isProjectOverlayOpen);
+    switchCreateProjectOverlay(true);
   };
 
   const { newProject, newProjectPlus } = styles;
@@ -36,15 +28,11 @@ const CreateProjectButton: FC<Props> = ({
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
-  isProjectOverlayOpen: getProjectOverlayState(state)
-});
-
 const mapDispatchToProps = {
   switchCreateProjectOverlay
 };
 
-export default connect<StateProps, DispatchProps, {}, RootState>(
-  mapStateToProps,
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
   mapDispatchToProps
 )(CreateProjectButton);

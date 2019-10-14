@@ -7,7 +7,7 @@ interface CreateProjectOverlay {
 }
 
 const initialState: CreateProjectOverlay = {
-  createProjectOverlayIsOpen: false
+  createProjectOverlayIsOpen: true
 };
 
 export default (
@@ -18,7 +18,7 @@ export default (
     case getType(switchCreateProjectOverlay): {
       return {
         ...state,
-        createProjectOverlayIsOpen: !action.payload
+        createProjectOverlayIsOpen: action.payload
       };
     }
     default: {
