@@ -6,6 +6,7 @@
   padding: 10px 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   word-break: break-word;
+  transition: background-color 0.4s;
 }
 
 .taskItem:hover {
@@ -18,6 +19,7 @@
 }
 
 .taskButton {
+  font-size: 0.7em;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.5);
   min-width: 18px;
@@ -32,13 +34,51 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.taskButton svg {
+  opacity: 0;
+  transition: 0.3s opacity;
+}
+
+.taskButton:hover svg {
+  opacity: 1;
+}
+
 .editButton {
+  opacity: 0;
   background-color: transparent;
   border: none;
   padding: 5px;
   margin-left: 8px;
+  transition: opacity 0.3s;
 }
 
 .editButton:hover {
   color: #53e3a6;
+}
+
+.taskItem:hover .editButton {
+  opacity: 1;
+}
+
+.taskActivated {
+  color: rgba(0, 0, 0, 0.4);
+  background-color: #ebebe4;
+  user-select: none;
+}
+
+.taskActivated .taskButton:hover {
+  background-color: #ebebe4;
+}
+
+.taskActivated:hover .editButton {
+  opacity: 0;
+  cursor: default;
+}
+
+.taskActivated:hover {
+  background-color: #ebebe4;
+}
+
+.taskActivated .taskButton svg {
+  opacity: 1;
 }
