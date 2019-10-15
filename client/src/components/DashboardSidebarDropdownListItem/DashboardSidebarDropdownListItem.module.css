@@ -6,6 +6,7 @@
   padding: 13px;
   user-select: none;
   cursor: pointer;
+  overflow: hidden;
   letter-spacing: 1px;
 }
 

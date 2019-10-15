@@ -1,5 +1,6 @@
 .aside {
   position: fixed;
+  background-color: #faf9fa;
   top: 0;
   width: 250px;
   padding: calc(35px + var(--nav-height)) 0;
