@@ -41,7 +41,7 @@ const DashboardSidebarFiltersItem: FC<Props> = ({
   
   const { activeProjectID } = activeProject;
   const { item, itemActive } = styles;
-  const itemStyling = item + " " + `${activeProjectID === id && itemActive}`
+  const itemStyling = item + ` ${activeProjectID === id && itemActive}`
   return (
     <li className={itemStyling} onClick={handleProjectFilterClick}>
       <span>

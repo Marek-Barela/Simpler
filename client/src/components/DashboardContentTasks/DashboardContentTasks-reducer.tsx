@@ -6,9 +6,9 @@ import { RootAction } from "../../redux/root-actions";
 import { ActiveProjectState } from "./DashboardContentTasks-model";
 
 const initialState: ActiveProjectState = {
-  projectTitle: "Inbox",
+  projectTitle: "",
   projectTasks: [],
-  activeProjectID: "inbox"
+  activeProjectID: ""
 };
 
 export default function(

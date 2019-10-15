@@ -5,6 +5,7 @@ import {
   fetchUserTasks,
   fetchUserTasksRequest
 } from "./Dashboard-actions";
+import { getProjectData } from "../DashboardContentTasks/DashboardContentTasks-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
 import { all, call, put, takeLatest, Effect } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
@@ -32,6 +33,7 @@ export function* handleFetchUserTasks(action: Effect) {
       payload
     );
     yield put(fetchUserTasksRequest.success(tasksResponse));
+    yield put(getProjectData({ _id: "inbox", title: "Inbox" })); // Initial set state
   } catch (err) {
     yield put(fetchUserTasksRequest.failure(err));
   }

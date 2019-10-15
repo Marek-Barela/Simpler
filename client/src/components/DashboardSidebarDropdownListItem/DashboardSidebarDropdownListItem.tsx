@@ -50,7 +50,7 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
   } = styles;
 
   const { activeProjectID } = activeProject;
-  const itemStyling = dropdownItem + " " + `${activeProjectID === _id && dropdownItemActive}`;
+  const itemStyling = dropdownItem + ` ${activeProjectID === _id && dropdownItemActive}`;
   return (
     <li className={itemStyling} onClick={handleProjectClick}>
       <div className={dropdownItemTextWrapper}>
