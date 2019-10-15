@@ -51,7 +51,8 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
   } = styles;
 
   const { activeProjectID } = activeProject;
-  const itemStyling = dropdownItem + ` ${activeProjectID === _id && dropdownItemActive}`;
+  const itemStyling =
+    dropdownItem + ` ${activeProjectID === _id && dropdownItemActive}`;
   return (
     <li className={itemStyling} onClick={handleProjectClick}>
       <div className={dropdownItemTextWrapper}>
@@ -61,7 +62,7 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
         />
         <p>{createSubText(title)}</p>
       </div>
-      <div className={dropdownItemButtonWrapper}>
+      <div className={dropdownItemButtonWrapper} data-trash="trash">
         <button className={dropdownItemButton} onClick={handleDeleteItemClick}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </button>
