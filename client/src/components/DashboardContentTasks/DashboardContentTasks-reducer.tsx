@@ -13,13 +13,16 @@ export default function(
   state: ActiveProjectState = initialState,
   action: RootAction
 ): ActiveProjectState {
-  const newState = { ...state };
   switch (action.type) {
-    /**case getType(setActiveProject): {
+    case getType(setActiveProject): {
+      const { _id, tasks, title } = action.payload;
       return {
-        ...state
+        ...state,
+        projectTitle: title,
+        projectTasks: tasks,
+        activeProjectID: _id
       };
-    } **/
+    }
     default: {
       return {
         ...state

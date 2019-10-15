@@ -1,17 +1,34 @@
 import React, { FC, useState } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import ListItemPopup from "../DashboardSidebarDropdownListItemPopup";
+import { getProjectData } from "../DashboardContentTasks/DashboardContentTasks-actions";
+import { GetProjectData } from "../DashboardContentTasks/DashboardContentTasks-model";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { ProjectsResponse } from "../Dashboard/Dashboard-model";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardSidebarDropdownListItem.module.css";
 
-type Props = ProjectsResponse;
+interface DispatchProps {
+  getProjectData: (action: GetProjectData) => void;
+}
 
-const DashboardSidebarDropdownListItem: FC<Props> = ({ _id, color, title }) => {
+type Props = DispatchProps & ProjectsResponse;
+
+const DashboardSidebarDropdownListItem: FC<Props> = ({
+  _id,
+  color,
+  title,
+  getProjectData
+}) => {
   const [popupIsVisible, setPopupIsVisible] = useState(false);
 
   const handleDeleteItemClick = () => {
     setPopupIsVisible(true);
+  };
+
+  const handleProjectClick = () => {
+    getProjectData({ _id, title });
   };
 
   const {
@@ -22,7 +39,7 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({ _id, color, title }) => {
     dropdownItemButton
   } = styles;
   return (
-    <li className={dropdownItem}>
+    <li className={dropdownItem} onClick={handleProjectClick}>
       <div className={dropdownItemTextWrapper}>
         <span
           className={dropdownItemBubble}
@@ -42,4 +59,11 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({ _id, color, title }) => {
   );
 };
 
-export default DashboardSidebarDropdownListItem;
+const mapDispatchToProps = {
+  getProjectData
+};
+
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
+  mapDispatchToProps
+)(DashboardSidebarDropdownListItem);
