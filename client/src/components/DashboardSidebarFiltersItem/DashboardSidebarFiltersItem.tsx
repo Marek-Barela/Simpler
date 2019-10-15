@@ -1,24 +1,64 @@
 import React, { FC } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
+import { getProjectData } from "../DashboardContentTasks/DashboardContentTasks-actions";
+import {
+  GetProjectData,
+  ActiveProjectState
+} from "../DashboardContentTasks/DashboardContentTasks-model";
+import { getActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-selectors";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardSidebarFiltersItem.module.css";
 
-interface ParentProps {
-  name: string;
-  icon: any;
+interface StateProps {
+  activeProject: ActiveProjectState;
 }
 
-type Props = ParentProps;
+interface DispatchProps {
+  getProjectData: (action: GetProjectData) => void;
+}
 
-const { item } = styles;
-const DashboardSidebarFiltersItem: FC<Props> = ({ name, icon }) => {
+interface ParentProps {
+  title: string;
+  icon: IconProp;
+  id: string;
+}
+
+type Props = StateProps & DispatchProps & ParentProps;
+
+const { item, itemActive } = styles;
+const DashboardSidebarFiltersItem: FC<Props> = ({
+  title,
+  icon,
+  id,
+  getProjectData,
+  activeProject
+}) => {
+  const handleProjectFilterClick = () => {
+    getProjectData({ _id: id, title });
+  };
+  const { activeProjectID } = activeProject;
+  const itemStyling = item + " " + `${activeProjectID === id && itemActive}`
   return (
-    <li className={item}>
+    <li className={itemStyling} onClick={handleProjectFilterClick}>
       <span>
         <FontAwesomeIcon icon={icon} />
       </span>
-      {name}
+      {title}
     </li>
   );
 };
 
-export default DashboardSidebarFiltersItem;
+const mapStateToProps = (state: RootState) => ({
+  activeProject: getActiveProjectState(state)
+});
+
+const mapDispatchToProps = {
+  getProjectData
+};
+
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardSidebarFiltersItem);
