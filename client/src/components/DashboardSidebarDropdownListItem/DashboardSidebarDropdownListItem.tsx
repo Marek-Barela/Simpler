@@ -11,6 +11,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { ProjectsResponse } from "../Dashboard/Dashboard-model";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
+import { createSubText } from "../../utils/createSubText";
 import styles from "./DashboardSidebarDropdownListItem.module.css";
 
 interface StateProps {
@@ -58,7 +59,7 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
           className={dropdownItemBubble}
           style={{ backgroundColor: color }}
         />
-        {title}
+        <p>{createSubText(title)}</p>
       </div>
       <div className={dropdownItemButtonWrapper}>
         <button className={dropdownItemButton} onClick={handleDeleteItemClick}>

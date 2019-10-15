@@ -2,8 +2,10 @@
   position: fixed;
   background-color: #faf9fa;
   top: 0;
-  width: 250px;
-  padding: calc(35px + var(--nav-height)) 0;
+  width: 280px;
+  margin-top: calc(35px + var(--nav-height));
+  padding-bottom: 140px;
   height: 100vh;
-  min-height: 400px;
+  min-height: 200px;
+  overflow-y: auto;
 }

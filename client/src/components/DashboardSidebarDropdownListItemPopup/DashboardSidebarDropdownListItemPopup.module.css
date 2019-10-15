@@ -11,11 +11,11 @@
 
 .popup {
   position: absolute;
+  text-align: center;
   width: 210px;
   padding: 14px;
   right: 0;
-  bottom: 0;
-  transform: translateY(100%);
+  top: 0;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -31,6 +31,9 @@
   background-color: #f3f3f3;
   font-weight: bold;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.button:last-child {
   margin-left: 10px;
 }
 

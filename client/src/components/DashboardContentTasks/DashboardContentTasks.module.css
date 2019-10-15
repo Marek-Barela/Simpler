@@ -1,6 +1,7 @@
 .tasksHeader {
   font-size: 0.8em;
   letter-spacing: 2px;
+  word-wrap: break-word;
 }
 
 .tasksList {
