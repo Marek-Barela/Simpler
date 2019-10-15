@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import FontAwesomeIcon from "../FontAwesomeIcon";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import React, { FC, useState } from "react";
+import CreateNewTask from "../DashboardContentTasksForm";
+import NewTasksButton from "../DashboardContentTasksButton";
 import { getActiveProjectState } from "./DashboardContentTasks-selectors";
 import { connect } from "react-redux";
 import styles from "./DashboardContentTasks.module.css";
@@ -14,12 +14,14 @@ interface StateProps {
 type Props = StateProps;
 
 const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
-  const handleNewProjectClick = () => {
-    console.log("new task");
+  const [activeInput, setActiveInput] = useState(false);
+
+  const handleNewProjectClick = (action: boolean) => {
+    setActiveInput(action);
   };
 
   const { projectTitle, projectTasks } = activeProject;
-  const { tasksContainer, tasksList, newTask, newTaskPlus } = styles;
+  const { tasksContainer, tasksList } = styles;
   return (
     <div className={tasksContainer}>
       <h2>{projectTitle}</h2>
@@ -29,12 +31,11 @@ const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
           return <li key={_id}>{description}</li>;
         })}
       </ul>
-      <button className={newTask} onClick={handleNewProjectClick}>
-        <span className={newTaskPlus}>
-          <FontAwesomeIcon icon={faPlus} />
-        </span>{" "}
-        Add task
-      </button>
+      {!activeInput ? (
+        <NewTasksButton newProject={handleNewProjectClick} />
+      ) : (
+        <CreateNewTask newProject={handleNewProjectClick} />
+      )}
     </div>
   );
 };
