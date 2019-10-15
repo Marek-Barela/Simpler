@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import CreateNewTask from "../DashboardContentTasksForm";
 import NewTasksButton from "../DashboardContentTasksButton";
+import TaskItem from "../DashboardContentTasksItem";
 import { getActiveProjectState } from "./DashboardContentTasks-selectors";
 import { connect } from "react-redux";
 import styles from "./DashboardContentTasks.module.css";
@@ -21,14 +22,14 @@ const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
   };
 
   const { projectTitle, projectTasks } = activeProject;
-  const { tasksContainer, tasksList } = styles;
+  const { tasksContainer, tasksHeader, tasksList } = styles;
   return (
     <div className={tasksContainer}>
-      <h2>{projectTitle}</h2>
+      <h2 className={tasksHeader}>{projectTitle}</h2>
       <ul className={tasksList}>
         {projectTasks.map(project => {
-          const { _id, description } = project;
-          return <li key={_id}>{description}</li>;
+          const { _id } = project;
+          return <TaskItem key={_id} {...project} />;
         })}
       </ul>
       {!activeInput ? (

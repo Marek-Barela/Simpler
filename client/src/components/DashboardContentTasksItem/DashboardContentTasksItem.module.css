@@ -1,0 +1,10 @@
+.taskItem {
+  font-size: 0.7em;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.taskItem:hover {
+  background-color: #faf9fa;
+}
