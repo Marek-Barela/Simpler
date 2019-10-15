@@ -29,7 +29,7 @@
 
 .dropdownItemTextWrapper p {
   margin: 6px 0;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .dropdownItemBubble {

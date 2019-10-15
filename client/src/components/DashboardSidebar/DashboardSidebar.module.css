@@ -4,8 +4,8 @@
   top: 0;
   width: 280px;
   margin-top: calc(35px + var(--nav-height));
-  padding-bottom: 140px;
-  height: 100vh;
+  padding-bottom: 60px;
+  height: calc(100vh - calc(35px + var(--nav-height)));
   min-height: 200px;
   overflow-y: auto;
 }
