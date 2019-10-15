@@ -17,6 +17,11 @@
   margin-top: 10px;
 }
 
+.dropdownItemActive {
+  font-weight: 800;
+  background-color: #ffffff;
+}
+
 .dropdownItemTextWrapper {
   display: flex;
   align-items: center;

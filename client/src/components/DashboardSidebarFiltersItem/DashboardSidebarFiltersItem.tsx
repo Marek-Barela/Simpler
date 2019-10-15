@@ -27,7 +27,7 @@ interface ParentProps {
 
 type Props = StateProps & DispatchProps & ParentProps;
 
-const { item, itemActive } = styles;
+
 const DashboardSidebarFiltersItem: FC<Props> = ({
   title,
   icon,
@@ -38,7 +38,9 @@ const DashboardSidebarFiltersItem: FC<Props> = ({
   const handleProjectFilterClick = () => {
     getProjectData({ _id: id, title });
   };
+  
   const { activeProjectID } = activeProject;
+  const { item, itemActive } = styles;
   const itemStyling = item + " " + `${activeProjectID === id && itemActive}`
   return (
     <li className={itemStyling} onClick={handleProjectFilterClick}>

@@ -2,24 +2,33 @@ import React, { FC, useState } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import ListItemPopup from "../DashboardSidebarDropdownListItemPopup";
 import { getProjectData } from "../DashboardContentTasks/DashboardContentTasks-actions";
-import { GetProjectData } from "../DashboardContentTasks/DashboardContentTasks-model";
+import {
+  GetProjectData,
+  ActiveProjectState
+} from "../DashboardContentTasks/DashboardContentTasks-model";
+import { getActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-selectors";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { ProjectsResponse } from "../Dashboard/Dashboard-model";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardSidebarDropdownListItem.module.css";
 
+interface StateProps {
+  activeProject: ActiveProjectState;
+}
+
 interface DispatchProps {
   getProjectData: (action: GetProjectData) => void;
 }
 
-type Props = DispatchProps & ProjectsResponse;
+type Props = StateProps & DispatchProps & ProjectsResponse;
 
 const DashboardSidebarDropdownListItem: FC<Props> = ({
   _id,
   color,
   title,
-  getProjectData
+  getProjectData,
+  activeProject
 }) => {
   const [popupIsVisible, setPopupIsVisible] = useState(false);
 
@@ -33,13 +42,17 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
 
   const {
     dropdownItem,
+    dropdownItemActive,
     dropdownItemTextWrapper,
     dropdownItemBubble,
     dropdownItemButtonWrapper,
     dropdownItemButton
   } = styles;
+
+  const { activeProjectID } = activeProject;
+  const itemStyling = dropdownItem + " " + `${activeProjectID === _id && dropdownItemActive}`;
   return (
-    <li className={dropdownItem} onClick={handleProjectClick}>
+    <li className={itemStyling} onClick={handleProjectClick}>
       <div className={dropdownItemTextWrapper}>
         <span
           className={dropdownItemBubble}
@@ -59,11 +72,15 @@ const DashboardSidebarDropdownListItem: FC<Props> = ({
   );
 };
 
+const mapStateToProps = (state: RootState) => ({
+  activeProject: getActiveProjectState(state)
+});
+
 const mapDispatchToProps = {
   getProjectData
 };
 
-export default connect<{}, DispatchProps, {}, RootState>(
-  null,
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  mapStateToProps,
   mapDispatchToProps
 )(DashboardSidebarDropdownListItem);
