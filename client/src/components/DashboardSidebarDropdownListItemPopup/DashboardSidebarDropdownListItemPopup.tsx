@@ -31,7 +31,7 @@ const ListItemPopup: FC<Props> = ({ setPopupIsVisible, id, deleteProject }) => {
     <>
       <div className={overlay} onClick={handleCancelClick} />
       <div className={popup}>
-        <p>Are you sure you want to delete this project ?</p>
+        <p>Are you sure that you want to delete this project ?</p>
         <button className={button} onClick={handleCancelClick}>
           Cancel
         </button>
