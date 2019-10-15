@@ -1,17 +1,36 @@
 import React, { FC, useState, FormEvent } from "react";
+import { createTask } from "./DashboardContentTasksForm-actions";
+import { CreateTaskData } from "./DashboardContentTasksForm-model";
+import { getActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-selectors";
+import { ActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-model";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardContentTasksForm.module.css";
+
+interface StateProps {
+  activeProject: ActiveProjectState;
+}
+
+interface DispatchProps {
+  createTask: (action: CreateTaskData) => void;
+}
 
 interface ParentProps {
   newProject: (action: boolean) => void;
 }
 
-type Props = ParentProps;
+type Props = StateProps & DispatchProps & ParentProps;
 
-const DashboardContentTasksForm: FC<Props> = ({ newProject }) => {
+const DashboardContentTasksForm: FC<Props> = ({
+  newProject,
+  activeProject,
+  createTask
+}) => {
   const [formData, setFormData] = useState({
     description: ""
   });
   const { description } = formData;
+  const { activeProjectID } = activeProject;
   const descriptionIsEmpty = description.trim().length === 0;
   const onChange = (e: FormEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
@@ -22,7 +41,7 @@ const DashboardContentTasksForm: FC<Props> = ({ newProject }) => {
     e.preventDefault();
     if (descriptionIsEmpty) return;
     newProject(false);
-    console.log(description);
+    createTask({ description, projectID: activeProjectID });
   };
 
   const handleCancelClick = () => {
@@ -49,11 +68,22 @@ const DashboardContentTasksForm: FC<Props> = ({ newProject }) => {
           type="submit"
           disabled={descriptionIsEmpty}
         >
-          Create task
+          Add task
         </button>
       </div>
     </form>
   );
 };
 
-export default DashboardContentTasksForm;
+const mapStateToProps = (state: RootState) => ({
+  activeProject: getActiveProjectState(state)
+});
+
+const mapDispatchToProps = {
+  createTask
+};
+
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardContentTasksForm);
