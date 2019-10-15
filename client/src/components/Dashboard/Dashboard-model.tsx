@@ -7,9 +7,9 @@ export interface ProjectsResponse {
 }
 
 export interface TasksResponse {
-  _id?: string;
-  description?: string;
-  date?: Date;
-  user?: string;
+  _id: string;
+  description: string;
+  date: Date;
+  user: string;
   projectID: string;
 }

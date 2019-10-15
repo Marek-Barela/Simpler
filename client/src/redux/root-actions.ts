@@ -10,6 +10,7 @@ import * as createProject from "../components/CreateProjectForm/CreateProjectFor
 import * as deleteProject from "../components/DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-actions";
 import * as activeProject from "../components/DashboardContentTasks/DashboardContentTasks-actions";
 import * as createTask from "../components/DashboardContentTasksForm/DashboardContentTasksForm-actions";
+import * as deleteTask from "../components/DashboardContentTasksItem/DashboardContentTasksItem-actions";
 
 export const actions = {
   authorization,
@@ -21,7 +22,8 @@ export const actions = {
   createProject,
   deleteProject,
   activeProject,
-  createTask
+  createTask,
+  deleteTask
 };
 
 export type RootAction = ActionType<typeof actions>;

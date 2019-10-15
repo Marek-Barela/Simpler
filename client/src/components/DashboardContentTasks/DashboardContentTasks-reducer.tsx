@@ -1,5 +1,6 @@
 import { setActiveProject } from "./DashboardContentTasks-actions";
 import { createTaskRequest } from "../DashboardContentTasksForm/DashboardContentTasksForm-actions";
+import { deleteUserTaskRequest } from "../DashboardContentTasksItem/DashboardContentTasksItem-actions";
 import { TasksResponse } from "../Dashboard/Dashboard-model";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
@@ -33,6 +34,15 @@ export default function(
       return {
         ...state,
         projectTasks: [...newState.projectTasks, action.payload]
+      };
+    }
+    case getType(deleteUserTaskRequest.success): {
+      const filtredTasks = newState.projectTasks.filter(
+        (task: any) => task._id !== action.payload
+      );
+      return {
+        ...state,
+        projectTasks: filtredTasks
       };
     }
     default: {

@@ -7,6 +7,7 @@ import createProject from "../components/CreateProjectForm/CreateProjectForm-sag
 import deleteProject from "../components/DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-saga";
 import activeProject from "../components/DashboardContentTasks/DashboardContentTasks-saga";
 import createTask from "../components/DashboardContentTasksForm/DashboardContentTasksForm-saga";
+import deleteTask from "../components/DashboardContentTasksItem/DashboardContentTasksItem-saga";
 
 export default function* rootSaga() {
   yield fork(authorization);
@@ -17,4 +18,5 @@ export default function* rootSaga() {
   yield fork(deleteProject);
   yield fork(activeProject);
   yield fork(createTask);
+  yield fork(deleteTask);
 }

@@ -5,6 +5,7 @@ import {
 import { createProjectRequest } from "../CreateProjectForm/CreateProjectForm-actions";
 import { deleteProjectRequest } from "../DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-actions";
 import { createTaskRequest } from "../DashboardContentTasksForm/DashboardContentTasksForm-actions";
+import { deleteUserTaskRequest } from "../DashboardContentTasksItem/DashboardContentTasksItem-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
@@ -74,6 +75,15 @@ export default function(
       return {
         ...state,
         tasks: [...newState.tasks, action.payload]
+      };
+    }
+    case getType(deleteUserTaskRequest.success): {
+      const filtredTasks = newState.tasks.filter(
+        (task: any) => task._id !== action.payload
+      );
+      return {
+        ...state,
+        tasks: filtredTasks
       };
     }
     default: {

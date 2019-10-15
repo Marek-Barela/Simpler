@@ -68,6 +68,7 @@
 
 .taskActivated .taskButton:hover {
   background-color: #ebebe4;
+  cursor: default;
 }
 
 .taskActivated:hover .editButton {

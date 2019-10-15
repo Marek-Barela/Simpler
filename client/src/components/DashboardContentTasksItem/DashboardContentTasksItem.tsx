@@ -2,11 +2,22 @@ import React, { FC, useState } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import { faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { TasksResponse } from "../Dashboard/Dashboard-model";
+import { deleteUserTask } from "./DashboardContentTasksItem-actions";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardContentTasksItem.module.css";
 
-type Props = TasksResponse;
+interface DispatchProps {
+  deleteUserTask: (id: string) => void;
+}
 
-const DashboardContentTasksItem: FC<Props> = ({ description }) => {
+type Props = DispatchProps & TasksResponse;
+
+const DashboardContentTasksItem: FC<Props> = ({
+  _id,
+  description,
+  deleteUserTask
+}) => {
   const [taskIsFinishing, setTaskIsFinishing] = useState(false);
 
   const handleTaskDoubleClick = () => {
@@ -15,7 +26,11 @@ const DashboardContentTasksItem: FC<Props> = ({ description }) => {
   };
 
   const handleFinishTaskButton = () => {
+    if (taskIsFinishing) return;
     setTaskIsFinishing(true);
+    setTimeout(() => {
+      deleteUserTask(_id);
+    }, 500);
   };
 
   const handleEditButtonClick = () => {
@@ -48,4 +63,11 @@ const DashboardContentTasksItem: FC<Props> = ({ description }) => {
   );
 };
 
-export default DashboardContentTasksItem;
+const mapDispatchToProps = {
+  deleteUserTask
+};
+
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
+  mapDispatchToProps
+)(DashboardContentTasksItem);
