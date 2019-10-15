@@ -1,11 +1,44 @@
 .taskItem {
-  font-size: 0.7em;
-  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.65em;
+  padding: 10px 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  word-wrap: break-word;
-  cursor: pointer;
+  word-break: break-word;
 }
 
 .taskItem:hover {
   background-color: #faf9fa;
+}
+
+.taskWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.taskButton {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  min-width: 18px;
+  max-width: 18px;
+  height: 18px;
+  padding: 0;
+  border-radius: 100%;
+  margin-right: 12px;
+}
+
+.taskButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.editButton {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  margin-left: 8px;
+}
+
+.editButton:hover {
+  color: #53e3a6;
 }
