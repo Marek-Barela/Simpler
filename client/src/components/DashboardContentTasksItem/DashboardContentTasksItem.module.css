@@ -5,6 +5,7 @@
   font-size: 0.65em;
   padding: 10px 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   word-break: break-word;
   transition: background-color 0.4s;
 }
@@ -64,6 +65,7 @@
   color: rgba(0, 0, 0, 0.4);
   background-color: #ebebe4;
   user-select: none;
+  border: none;
 }
 
 .taskActivated .taskButton:hover {

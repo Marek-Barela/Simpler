@@ -58,6 +58,7 @@ const DashboardContentTasksForm: FC<Props> = ({
         value={description}
         className={input}
         placeholder="e.g. Learn portuguese language"
+        autoComplete="off"
       />
       <div>
         <button className={button} type="button" onClick={handleCancelClick}>

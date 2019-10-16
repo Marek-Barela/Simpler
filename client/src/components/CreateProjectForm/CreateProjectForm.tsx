@@ -46,7 +46,13 @@ const CreateProjectForm: FC<Props> = ({
       <header className={header}>Add project</header>
       <section className={content}>
         <label htmlFor="project">Name of project</label>
-        <input name="project" type="text" onChange={onChange} value={project} />
+        <input
+          name="project"
+          type="text"
+          onChange={onChange}
+          value={project}
+          autoComplete="off"
+        />
         <ProjectFormSelect
           handleChangeSelect={handleChangeSelect}
           color={color}
