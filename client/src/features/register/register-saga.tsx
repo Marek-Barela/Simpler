@@ -2,7 +2,7 @@ import * as api from "./register-api";
 import { registerUser, registerUserRequest } from "./register-actions";
 import { loadUser } from "../authorization/authorization-actions";
 import { setAlert, removeAlert } from "../../components/Alert/Alert-actions";
-import { all, call, put, takeLatest, delay } from "redux-saga/effects";
+import { all, call, put, takeLatest, delay, Effect } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { RegisterUser } from "./register-model";
 import uuid from "uuid";
@@ -11,7 +11,7 @@ interface Errors {
   msg: "string";
 }
 
-export function* handleRegisterUser(registrationData: any) {
+export function* handleRegisterUser(registrationData: Effect) {
   const { payload } = registrationData;
   try {
     yield put(registerUserRequest.request());

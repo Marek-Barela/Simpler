@@ -1,0 +1,11 @@
+.aside {
+  position: fixed;
+  background-color: #faf9fa;
+  top: 0;
+  width: 280px;
+  margin-top: calc(35px + var(--nav-height));
+  padding-bottom: 60px;
+  height: calc(100vh - calc(35px + var(--nav-height)));
+  min-height: 200px;
+  overflow-y: auto;
+}

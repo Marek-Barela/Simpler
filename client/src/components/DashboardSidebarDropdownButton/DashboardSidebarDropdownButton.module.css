@@ -1,0 +1,17 @@
+.dropdownButton {
+  font-size: 0.6em;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  letter-spacing: 2px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 10px;
+}
+
+.dropdownButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

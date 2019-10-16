@@ -1,0 +1,34 @@
+.dropdown {
+  padding-right: 15px;
+}
+
+.dropdownButtonCaret {
+  color: #999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  transform: rotate(0deg);
+  transition: transform 0.4s;
+}
+
+.dropdownButtonCaretRotate {
+  transform: rotate(90deg);
+}
+
+.dropdownList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  height: auto;
+  max-height: 2500px;
+  transition: max-height 0.4s;
+}
+
+.dropdownListHidden {
+  max-height: 0px;
+  overflow: hidden;
+}

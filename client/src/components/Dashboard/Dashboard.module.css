@@ -1,7 +1,13 @@
 .container {
-  height: 100vh;
-  min-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  background-color: #faf9fa;
+  min-height: 100vh;
+}
+
+.contentWrapper {
+  padding-top: var(--nav-height);
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  overflow-x: hidden;
 }

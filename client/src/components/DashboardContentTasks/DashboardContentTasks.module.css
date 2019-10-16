@@ -1,0 +1,15 @@
+.tasksContainer {
+  padding-bottom: 30px;
+}
+
+.tasksHeader {
+  font-size: 0.8em;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
+
+.tasksList {
+  padding: 0;
+  margin: 0 0 10px 0;
+  list-style-type: none;
+}
