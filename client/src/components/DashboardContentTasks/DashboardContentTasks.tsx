@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import CreateNewTask from "../DashboardContentTasksForm";
 import NewTasksButton from "../DashboardContentTasksButton";
 import TaskItem from "../DashboardContentTasksItem";
+import EmptyTask from "../DashboardContentTasksEmpty";
 import { getActiveProjectState } from "./DashboardContentTasks-selectors";
 import { connect } from "react-redux";
 import styles from "./DashboardContentTasks.module.css";
@@ -17,7 +18,7 @@ type Props = StateProps;
 const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
   const [activeInput, setActiveInput] = useState(false);
 
-  const handleNewProjectClick = (action: boolean) => {
+  const handleNewTaskClick = (action: boolean) => {
     setActiveInput(action);
   };
 
@@ -33,9 +34,12 @@ const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
         })}
       </ul>
       {!activeInput ? (
-        <NewTasksButton newProject={handleNewProjectClick} />
+        <NewTasksButton newProject={handleNewTaskClick} />
       ) : (
-        <CreateNewTask newProject={handleNewProjectClick} />
+        <CreateNewTask newProject={handleNewTaskClick} />
+      )}
+      {projectTasks.length === 0 && !activeInput && (
+        <EmptyTask newProject={handleNewTaskClick} />
       )}
     </div>
   );
