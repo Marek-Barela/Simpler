@@ -51,7 +51,7 @@ const DashboardContentTasksForm: FC<Props> = ({
   const { form, input, button, createButton } = styles;
   const createButtonStyling = button + " " + createButton;
   return (
-    <form onSubmit={onSubmit} className={form}>
+    <form onSubmit={onSubmit} className={form} spellCheck={false}>
       <input
         name="description"
         onChange={onChange}
