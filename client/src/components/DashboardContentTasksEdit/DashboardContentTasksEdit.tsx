@@ -1,5 +1,13 @@
 import React, { FC, FormEvent, useState } from "react";
+import { editTask } from "./DashboardContentTasksEdit-actions";
+import { EditTaskData } from "./DashboardContentTasksEdit-model";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardContentTasksEdit.module.css";
+
+interface DispatchProps {
+  editTask: (action: EditTaskData) => void;
+}
 
 interface ParentProps {
   _id: string;
@@ -7,11 +15,13 @@ interface ParentProps {
   cancelEditMode: () => void;
 }
 
-type Props = ParentProps;
+type Props = DispatchProps & ParentProps;
 
 const DashboardContentTasksEdit: FC<Props> = ({
+  _id,
   prevDescription,
-  cancelEditMode
+  cancelEditMode,
+  editTask
 }) => {
   const [formData, setFormData] = useState({
     description: prevDescription
@@ -27,6 +37,8 @@ const DashboardContentTasksEdit: FC<Props> = ({
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (descriptionIsEmpty) return;
+    editTask({ _id, description });
+    cancelEditMode();
   };
 
   const handleCancelClick = () => {
@@ -62,4 +74,11 @@ const DashboardContentTasksEdit: FC<Props> = ({
   );
 };
 
-export default DashboardContentTasksEdit;
+const mapDispatchToProps = {
+  editTask
+};
+
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
+  mapDispatchToProps
+)(DashboardContentTasksEdit);
