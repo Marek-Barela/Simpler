@@ -4,6 +4,7 @@ import DashboardContent from "../DashboardContent";
 import DashboardTopNavigation from "../DashboardTopNavigation";
 import RedirectRule from "../RedirectRule";
 import CreateProject from "../CreateProject";
+import QuickTask from "../QuickTask";
 import { fetchUserProjects, fetchUserTasks } from "./Dashboard-actions";
 import { getUserDetails } from "../../selectors/getUserData";
 import { connect } from "react-redux";
@@ -33,6 +34,7 @@ const Dashboard: FC<Props> = ({ fetchUserProjects, fetchUserTasks, user }) => {
     <>
       <RedirectRule redirectPathIfNotAuthorized="/login" />
       <CreateProject />
+      <QuickTask />
       <div className={container}>
         <DashboardTopNavigation />
         <main className={contentWrapper}>

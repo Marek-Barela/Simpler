@@ -5,13 +5,15 @@ import alert from "../components/Alert/Alert-reducer";
 import dashboard from "../components/Dashboard/Dashboard-reducer";
 import switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-reducer";
 import activeProject from "../components/DashboardContentTasks/DashboardContentTasks-reducer";
+import quickTaskOverlay from "../components/QuickTaskOverlay/QuickTaskOverlay-reducer";
 
 const reducerMap = {
   userData,
   alert,
   dashboard,
   switchOverlay,
-  activeProject
+  activeProject,
+  quickTaskOverlay
 };
 
 export type RootState = {

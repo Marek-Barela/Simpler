@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import SettingsDropdown from "../DashboardTopNavigationSettings";
 import logoIcon from "../../assets/images/simpler-icon.png";
+import { switchCreateQuickTaskOverlay } from "../QuickTaskOverlay/QuickTaskOverlay-actions";
+import { connect } from "react-redux";
 import { faPlus, faCog } from "@fortawesome/free-solid-svg-icons";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardTopNavigation.module.css";
 
-const DashboardTopNavigation = () => {
+interface DispatchProp {
+  switchCreateQuickTaskOverlay: (action: boolean) => void;
+}
+
+type Props = DispatchProp;
+
+const DashboardTopNavigation: FC<Props> = ({
+  switchCreateQuickTaskOverlay
+}) => {
   const {
     overlay,
     navbar,
@@ -19,6 +30,10 @@ const DashboardTopNavigation = () => {
 
   const handleSettingsClick = (action: boolean): void => {
     setMenuIsOpen(action);
+  };
+
+  const handleQuickTaskClick = (action: boolean) => {
+    switchCreateQuickTaskOverlay(action);
   };
 
   return (
@@ -39,7 +54,7 @@ const DashboardTopNavigation = () => {
           ) : null}
           <button
             className={navigationButton}
-            onClick={() => handleSettingsClick(false)}
+            onClick={() => handleQuickTaskClick(true)}
           >
             <FontAwesomeIcon icon={faPlus} />
           </button>
@@ -56,4 +71,11 @@ const DashboardTopNavigation = () => {
   );
 };
 
-export default DashboardTopNavigation;
+const mapDispatchToProps = {
+  switchCreateQuickTaskOverlay
+};
+
+export default connect<{}, DispatchProp, {}, RootState>(
+  null,
+  mapDispatchToProps
+)(DashboardTopNavigation);
