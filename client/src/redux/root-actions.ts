@@ -12,6 +12,7 @@ import * as activeProject from "../components/DashboardContentTasks/DashboardCon
 import * as createTask from "../components/DashboardContentTasksForm/DashboardContentTasksForm-actions";
 import * as deleteTask from "../components/DashboardContentTasksItem/DashboardContentTasksItem-actions";
 import * as editTask from "../components/DashboardContentTasksEdit/DashboardContentTasksEdit-actions";
+import * as logout from "../components/DashboardTopNavigationSettings/DashboardTopNavigationSettings-action";
 
 export const actions = {
   authorization,
@@ -25,7 +26,8 @@ export const actions = {
   activeProject,
   createTask,
   deleteTask,
-  editTask
+  editTask,
+  logout
 };
 
 export type RootAction = ActionType<typeof actions>;
