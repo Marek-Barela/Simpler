@@ -1,6 +1,7 @@
 import { loadUserRequest } from "../authorization/authorization-actions";
 import { loginUserRequest } from "../login/login-actions";
 import { registerUserRequest } from "../register/register-actions";
+import { logout } from "../../components/DashboardTopNavigationSettings/DashboardTopNavigationSettings-action";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
 import { User } from "../__commonModels__/userModel";
@@ -43,6 +44,16 @@ export default function(state: User = initialState, action: RootAction): User {
     case getType(loadUserRequest.failure):
     case getType(loginUserRequest.failure):
     case getType(registerUserRequest.failure): {
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        isFetching: false,
+        user: { _id: null }
+      };
+    }
+    case getType(logout): {
       localStorage.removeItem("token");
       return {
         ...state,

@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import CreateNewTask from "../DashboardContentTasksForm";
+import CreateNewTaskForm from "../DashboardContentTasksForm";
 import NewTasksButton from "../DashboardContentTasksButton";
 import TaskItem from "../DashboardContentTasksItem";
 import EmptyTask from "../DashboardContentTasksEmpty";
@@ -36,7 +36,7 @@ const DashboardContentTasks: FC<Props> = ({ activeProject }) => {
       {!activeInput ? (
         <NewTasksButton newProject={handleNewTaskClick} />
       ) : (
-        <CreateNewTask newProject={handleNewTaskClick} />
+        <CreateNewTaskForm newProject={handleNewTaskClick} />
       )}
       {projectTasks.length === 0 && !activeInput && (
         <EmptyTask newProject={handleNewTaskClick} />

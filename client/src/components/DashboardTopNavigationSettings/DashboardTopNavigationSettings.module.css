@@ -1,0 +1,47 @@
+.settings {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  transform: translateY(100%);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.settings::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  right: 12px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(-45deg);
+  background-color: #ffffff;
+}
+
+.list {
+  min-width: 200px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.listItem {
+  font-size: 0.6em;
+  padding: 8px 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  width: 100%;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.listItem svg {
+  margin-right: 10px;
+}
+
+.listItem:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

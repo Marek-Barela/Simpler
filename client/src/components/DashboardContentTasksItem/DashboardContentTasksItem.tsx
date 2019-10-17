@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
+import EditTaskForm from "../DashboardContentTasksEdit";
 import { faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { TasksResponse } from "../Dashboard/Dashboard-model";
 import { deleteUserTask } from "./DashboardContentTasksItem-actions";
@@ -18,16 +19,21 @@ const DashboardContentTasksItem: FC<Props> = ({
   description,
   deleteUserTask
 }) => {
-  const [taskIsFinishing, setTaskIsFinishing] = useState(false);
+  const [taskData, setTaskData] = useState({
+    taskIsFinishing: false,
+    taskIsEdited: false
+  });
+
+  const { taskIsFinishing, taskIsEdited } = taskData;
 
   const handleTaskDoubleClick = () => {
-    if (taskIsFinishing) return;
-    console.log("work");
+    if (taskIsFinishing) return; // Prevent if task is already deleting
+    setTaskData({ ...taskData, taskIsEdited: true });
   };
 
   const handleFinishTaskButton = () => {
     if (taskIsFinishing) return;
-    setTaskIsFinishing(true);
+    setTaskData({ ...taskData, taskIsFinishing: true });
     setTimeout(() => {
       deleteUserTask(_id);
     }, 500);
@@ -35,7 +41,11 @@ const DashboardContentTasksItem: FC<Props> = ({
 
   const handleEditButtonClick = () => {
     if (taskIsFinishing) return;
-    console.log("work");
+    setTaskData({ ...taskData, taskIsEdited: true });
+  };
+
+  const handleCancelEditClick = () => {
+    setTaskData({ ...taskData, taskIsEdited: false });
   };
 
   const {
@@ -48,7 +58,7 @@ const DashboardContentTasksItem: FC<Props> = ({
 
   const taskItemStyling = taskItem + ` ${taskIsFinishing && taskActivated}`;
 
-  return (
+  return !taskIsEdited ? (
     <li className={taskItemStyling} onDoubleClick={handleTaskDoubleClick}>
       <div className={taskWrapper}>
         <button className={taskButton} onClick={handleFinishTaskButton}>
@@ -60,6 +70,12 @@ const DashboardContentTasksItem: FC<Props> = ({
         <FontAwesomeIcon icon={faEdit} />
       </button>
     </li>
+  ) : (
+    <EditTaskForm
+      cancelEditMode={handleCancelEditClick}
+      _id={_id}
+      prevDescription={description}
+    />
   );
 };
 

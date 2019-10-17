@@ -6,6 +6,7 @@ import { createProjectRequest } from "../CreateProjectForm/CreateProjectForm-act
 import { deleteProjectRequest } from "../DashboardSidebarDropdownListItemPopup/DashboardSidebarDropdownListItemPopup-actions";
 import { createTaskRequest } from "../DashboardContentTasksForm/DashboardContentTasksForm-actions";
 import { deleteUserTaskRequest } from "../DashboardContentTasksItem/DashboardContentTasksItem-actions";
+import { editTaskRequest } from "../DashboardContentTasksEdit/DashboardContentTasksEdit-actions";
 import { ProjectsResponse, TasksResponse } from "./Dashboard-model";
 import { getType } from "typesafe-actions";
 import { RootAction } from "../../redux/root-actions";
@@ -85,6 +86,16 @@ export default function(
         ...state,
         tasks: filtredTasks
       };
+    }
+    case getType(editTaskRequest.success): {
+      const findTask = newState.tasks.find(task => task._id === action.payload._id);
+      if (findTask) { 
+        findTask.description = action.payload.description
+      }
+      return {
+        ...state,
+        tasks: newState.tasks
+      }
     }
     default: {
       return {

@@ -1,36 +1,32 @@
-import React, { FC, useState, FormEvent } from "react";
-import { createTask } from "./DashboardContentTasksForm-actions";
-import { CreateTaskData } from "./DashboardContentTasksForm-model";
-import { getActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-selectors";
-import { ActiveProjectState } from "../DashboardContentTasks/DashboardContentTasks-model";
+import React, { FC, FormEvent, useState } from "react";
+import { editTask } from "./DashboardContentTasksEdit-actions";
+import { EditTaskData } from "./DashboardContentTasksEdit-model";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
-import styles from "./DashboardContentTasksForm.module.css";
-
-interface StateProps {
-  activeProject: ActiveProjectState;
-}
+import styles from "./DashboardContentTasksEdit.module.css";
 
 interface DispatchProps {
-  createTask: (action: CreateTaskData) => void;
+  editTask: (action: EditTaskData) => void;
 }
 
 interface ParentProps {
-  newProject: (action: boolean) => void;
+  _id: string;
+  prevDescription: string;
+  cancelEditMode: () => void;
 }
 
-type Props = StateProps & DispatchProps & ParentProps;
+type Props = DispatchProps & ParentProps;
 
-const DashboardContentTasksForm: FC<Props> = ({
-  newProject,
-  activeProject,
-  createTask
+const DashboardContentTasksEdit: FC<Props> = ({
+  _id,
+  prevDescription,
+  cancelEditMode,
+  editTask
 }) => {
   const [formData, setFormData] = useState({
-    description: ""
+    description: prevDescription
   });
   const { description } = formData;
-  const { activeProjectID } = activeProject;
   const descriptionIsEmpty = description.trim().length === 0;
 
   const onChange = (e: FormEvent<HTMLInputElement>): void => {
@@ -41,16 +37,17 @@ const DashboardContentTasksForm: FC<Props> = ({
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (descriptionIsEmpty) return;
-    newProject(false);
-    createTask({ description, projectID: activeProjectID });
+    editTask({ _id, description });
+    cancelEditMode();
   };
 
   const handleCancelClick = () => {
-    newProject(false);
+    cancelEditMode();
   };
 
   const { form, input, button, createButton } = styles;
   const createButtonStyling = button + " " + createButton;
+
   return (
     <form onSubmit={onSubmit} className={form} spellCheck={false}>
       <input
@@ -58,7 +55,7 @@ const DashboardContentTasksForm: FC<Props> = ({
         onChange={onChange}
         value={description}
         className={input}
-        placeholder="e.g. Learn portuguese language"
+        placeholder="Update your task"
         autoComplete="off"
       />
       <div>
@@ -70,22 +67,18 @@ const DashboardContentTasksForm: FC<Props> = ({
           type="submit"
           disabled={descriptionIsEmpty}
         >
-          Add task
+          Update
         </button>
       </div>
     </form>
   );
 };
 
-const mapStateToProps = (state: RootState) => ({
-  activeProject: getActiveProjectState(state)
-});
-
 const mapDispatchToProps = {
-  createTask
+  editTask
 };
 
-export default connect<StateProps, DispatchProps, {}, RootState>(
-  mapStateToProps,
+export default connect<{}, DispatchProps, {}, RootState>(
+  null,
   mapDispatchToProps
-)(DashboardContentTasksForm);
+)(DashboardContentTasksEdit);

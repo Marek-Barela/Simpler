@@ -71,7 +71,7 @@ router.get("/:id", auth, async (req, res) => {
 router.put("/:id", auth, async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
-
+    
     if(task.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized"});
     }
@@ -81,11 +81,10 @@ router.put("/:id", auth, async (req, res) => {
     }
 
     task.description = req.body.description;
-    task.projectID = req.body.projectID;
 
     await task.save()
 
-    res.json({ msg: "task updated" });
+    res.json(task);
   }
   catch (err) {
     console.error(err.message);
