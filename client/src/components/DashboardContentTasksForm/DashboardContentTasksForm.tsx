@@ -32,6 +32,7 @@ const DashboardContentTasksForm: FC<Props> = ({
   const { description } = formData;
   const { activeProjectID } = activeProject;
   const descriptionIsEmpty = description.trim().length === 0;
+
   const onChange = (e: FormEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
     setFormData({ ...formData, [name]: value });

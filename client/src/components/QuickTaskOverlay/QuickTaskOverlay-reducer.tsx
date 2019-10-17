@@ -7,7 +7,7 @@ interface CreateProjectOverlay {
 }
 
 const initialState: CreateProjectOverlay = {
-  createQuickTaskOverlay: true
+  createQuickTaskOverlay: false
 };
 
 export default (

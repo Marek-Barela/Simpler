@@ -34,6 +34,7 @@ const DashboardTopNavigation: FC<Props> = ({
 
   const handleQuickTaskClick = (action: boolean) => {
     switchCreateQuickTaskOverlay(action);
+    setMenuIsOpen(false);
   };
 
   return (
