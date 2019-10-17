@@ -3,10 +3,11 @@ import { getUserDashboardData } from "../Dashboard/Dashboard-selector";
 import { DashboardState } from "../Dashboard/Dashboard-reducer";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
+import { createSubText } from "../../utils/createSubText";
 import styles from "./QuickTaskSelect.module.css";
 
 interface StateProps {
-  dashboardData: DashboardState
+  dashboardData: DashboardState;
 }
 
 interface ParentProps {
@@ -16,18 +17,30 @@ interface ParentProps {
 
 type Props = StateProps & ParentProps;
 
-const QuickTaskSelect: FC<Props> = ({dashboardData, handleChangeSelect, projectID }) => {
+const QuickTaskSelect: FC<Props> = ({
+  dashboardData,
+  handleChangeSelect,
+  projectID
+}) => {
   const { select, option } = styles;
   const { projects } = dashboardData;
   return (
     <select className={select} onChange={handleChangeSelect} value={projectID}>
       {BaseProjects.map(project => {
         const { id, title } = project;
-        return <option className={option} value={id} key={id}>{title}</option>
+        return (
+          <option className={option} value={id} key={id}>
+            {title}
+          </option>
+        );
       })}
       {projects.map(project => {
         const { _id, title } = project;
-        return <option className={option} value={_id} key={_id}>{title}</option>
+        return (
+          <option className={option} value={_id} key={_id}>
+            {createSubText(title)}
+          </option>
+        );
       })}
     </select>
   );
@@ -48,8 +61,11 @@ const BaseProjects = [
   }
 ];
 
-const mapStateToProps = (state:RootState) => ({
+const mapStateToProps = (state: RootState) => ({
   dashboardData: getUserDashboardData(state)
-})
+});
 
-export default connect(mapStateToProps, {})(QuickTaskSelect);
+export default connect(
+  mapStateToProps,
+  {}
+)(QuickTaskSelect);
