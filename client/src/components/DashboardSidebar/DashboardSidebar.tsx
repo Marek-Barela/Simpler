@@ -1,17 +1,30 @@
-import React from "react";
+import React, { FC } from "react";
 import DashboardSidebarFilters from "../DashboardSidebarFilters";
 import DashboardSidebarDropdown from "../DashboardSidebarDropdown";
+import { getSidebarMenu } from "../DashboardTopNavigationMenu//DashboardTopNavigationMenu-selectors";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/root-reducer";
 import styles from "./DashboardSidebar.module.css";
 
-const DashboardSidebar = () => {
-  const { aside } = styles;
+interface DispatchProps {
+  isMenuNavbarActive: boolean;
+}
 
+type Props = DispatchProps;
+
+const DashboardSidebar: FC<Props> = ({ isMenuNavbarActive }) => {
+  const { aside, asideLeft } = styles;
+  const asideStyles = aside + ` ${isMenuNavbarActive && asideLeft}`;
   return (
-    <aside className={aside}>
+    <aside className={asideStyles}>
       <DashboardSidebarFilters />
       <DashboardSidebarDropdown />
     </aside>
   );
 };
 
-export default DashboardSidebar;
+const mapStateToProps = (state: RootState) => ({
+  isMenuNavbarActive: getSidebarMenu(state)
+});
+
+export default connect(mapStateToProps)(DashboardSidebar);

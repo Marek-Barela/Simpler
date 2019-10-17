@@ -14,6 +14,7 @@ import * as deleteTask from "../components/DashboardContentTasksItem/DashboardCo
 import * as editTask from "../components/DashboardContentTasksEdit/DashboardContentTasksEdit-actions";
 import * as logout from "../components/DashboardTopNavigationSettings/DashboardTopNavigationSettings-action";
 import * as quickTaskOverlay from "../components/QuickTaskOverlay/QuickTaskOverlay-actions";
+import * as sidebarMenu from "../components/DashboardTopNavigationMenu/DashboardTopNavigationMenu-actions";
 
 export const actions = {
   authorization,
@@ -29,7 +30,8 @@ export const actions = {
   deleteTask,
   editTask,
   logout,
-  quickTaskOverlay
+  quickTaskOverlay,
+  sidebarMenu
 };
 
 export type RootAction = ActionType<typeof actions>;

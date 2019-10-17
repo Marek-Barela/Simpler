@@ -6,6 +6,7 @@ import dashboard from "../components/Dashboard/Dashboard-reducer";
 import switchOverlay from "../components/CreateProjectOverlay/CreateProjectOverlay-reducer";
 import activeProject from "../components/DashboardContentTasks/DashboardContentTasks-reducer";
 import quickTaskOverlay from "../components/QuickTaskOverlay/QuickTaskOverlay-reducer";
+import sidebarMenu from "../components/DashboardTopNavigationMenu/DashboardTopNavigationMenu-reducer";
 
 const reducerMap = {
   userData,
@@ -13,7 +14,8 @@ const reducerMap = {
   dashboard,
   switchOverlay,
   activeProject,
-  quickTaskOverlay
+  quickTaskOverlay,
+  sidebarMenu
 };
 
 export type RootState = {

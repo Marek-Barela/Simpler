@@ -2,6 +2,7 @@ import React, { useState, FC } from "react";
 import FontAwesomeIcon from "../FontAwesomeIcon";
 import SettingsDropdown from "../DashboardTopNavigationSettings";
 import logoIcon from "../../assets/images/simpler-icon.png";
+import MenuButton from "../DashboardTopNavigationMenu";
 import { switchCreateQuickTaskOverlay } from "../QuickTaskOverlay/QuickTaskOverlay-actions";
 import { connect } from "react-redux";
 import { faPlus, faCog } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +41,7 @@ const DashboardTopNavigation: FC<Props> = ({
   return (
     <nav className={navbar}>
       <div className={navbarWrapper}>
+        <MenuButton handleSettingsClick={handleSettingsClick} />
         <div
           className={iconContainer}
           onClick={() => handleSettingsClick(false)}

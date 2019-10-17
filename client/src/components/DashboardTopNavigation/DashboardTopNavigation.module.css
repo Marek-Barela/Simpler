@@ -19,7 +19,7 @@
 
 .iconContainer {
   height: 100%;
-  display: flex;
+  display: none;
   align-items: center;
 }
 
@@ -63,4 +63,10 @@
   height: 100vh;
   background-color: transparent;
   z-index: -1;
+}
+
+@media (min-width: 750px) {
+  .iconContainer {
+    display: flex;
+  }
 }
