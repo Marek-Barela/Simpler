@@ -31,6 +31,9 @@ export default function(
       };
     }
     case getType(createTaskRequest.success): {
+      if (action.payload.projectID !== newState.activeProjectID) {
+        return { ...state };
+      }
       return {
         ...state,
         projectTasks: [...newState.projectTasks, action.payload]

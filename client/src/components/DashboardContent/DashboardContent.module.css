@@ -1,7 +1,14 @@
 .content {
-  width: calc(100% - 280px);
+  width: 100%;
   min-height: calc(100vh - var(--nav-height));
-  margin-left: 280px;
+  margin-left: 0px;
   padding: 35px;
   background-color: #ffffff;
+}
+
+@media (min-width: 750px) {
+  .content {
+    width: calc(100% - 280px);
+    margin-left: 280px;
+  }
 }
